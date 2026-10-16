@@ -14,12 +14,7 @@
                 </div>
             @endif
 
-            @if(session('dusk_output'))
-                <div class="p-4 bg-slate-900 text-emerald-400 font-mono text-xs rounded-lg overflow-x-auto shadow-inner">
-                    <h4 class="text-slate-300 font-semibold mb-2 font-sans border-b border-slate-700 pb-2">Log Hasil Eksekusi Laravel Dusk:</h4>
-                    <pre class="whitespace-pre-wrap">{{ session('dusk_output') }}</pre>
-                </div>
-            @endif
+
 
             <!-- Panel Informasi Skenario -->
             <div class="bg-white dark:bg-[#0A1930] overflow-hidden shadow-md rounded-2xl border border-slate-200 dark:border-slate-800/50">
@@ -130,6 +125,11 @@
                                     <option value="press">Klik Tombol (press)</option>
                                     <option value="click">Klik Elemen (click)</option>
                                     <option value="assertSee">Pastikan Teks Terlihat (assertSee)</option>
+                                    <option value="select">Pilih Dropdown (select)</option>
+                                    <option value="check">Centang Checkbox (check)</option>
+                                    <option value="radio">Pilih Radio (radio)</option>
+                                    <option value="waitFor">Tunggu Elemen (waitFor)</option>
+                                    <option value="pause">Jeda (pause)</option>
                                 </select>
                             </div>
 
@@ -156,5 +156,190 @@
             </div>
 
         </div>
+
+        <!-- Panel Riwayat Eksekusi Pengujian -->
+        <div class="max-w-5xl mx-auto sm:px-6 lg:px-8 space-y-6 mt-6">
+            <div class="bg-white dark:bg-[#0A1930] overflow-hidden shadow-md rounded-2xl border border-slate-200 dark:border-slate-800/50">
+                <div class="p-6 sm:p-8">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4 border-b border-slate-200 dark:border-slate-800/80 pb-4">
+                        <h3 class="text-lg font-semibold text-slate-800 dark:text-slate-200">
+                            Riwayat Eksekusi Pengujian
+                        </h3>
+                        
+                        <!-- Panel Filter -->
+                        <form id="filter-form" method="GET" action="{{ route('test-scenarios.show', $testScenario->id) }}" class="flex flex-wrap gap-3">
+                            <div class="relative">
+                                <select name="sort" onchange="document.getElementById('filter-form').submit()" class="block w-full rounded-lg border-slate-300 dark:border-slate-600 dark:bg-[#0A1930] text-slate-900 dark:text-slate-100 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm pl-3 pr-10 py-2">
+                                    <option value="desc" {{ request('sort') == 'desc' ? 'selected' : '' }}>Terbaru</option>
+                                    <option value="asc" {{ request('sort') == 'asc' ? 'selected' : '' }}>Terlama</option>
+                                </select>
+                            </div>
+                            <div class="relative">
+                                <select name="status" onchange="document.getElementById('filter-form').submit()" class="block w-full rounded-lg border-slate-300 dark:border-slate-600 dark:bg-[#0A1930] text-slate-900 dark:text-slate-100 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm pl-3 pr-10 py-2">
+                                    <option value="">Semua Status</option>
+                                    <option value="Sukses" {{ request('status') == 'Sukses' ? 'selected' : '' }}>Sukses</option>
+                                    <option value="Gagal" {{ request('status') == 'Gagal' ? 'selected' : '' }}>Gagal</option>
+                                </select>
+                            </div>
+                            <div class="relative">
+                                <input type="date" name="date" value="{{ request('date') }}" onchange="document.getElementById('filter-form').submit()" class="block w-full rounded-lg border-slate-300 dark:border-slate-600 dark:bg-[#0A1930] text-slate-900 dark:text-slate-100 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-3 py-2 text-slate-600 dark:text-slate-400" title="Filter berdasarkan tanggal" style="min-width: 140px;">
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Panel Kontrol Penghapusan -->
+                    <form id="delete-form" action="{{ route('test-scenarios.histories.destroy', $testScenario->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        
+                        <div class="flex flex-wrap justify-between items-center bg-slate-50 dark:bg-[#112240] p-3 rounded-xl border border-slate-200 dark:border-slate-700/50 mb-4 gap-3">
+                            <label class="flex items-center space-x-2 cursor-pointer text-sm font-medium text-slate-700 dark:text-slate-300">
+                                <input type="checkbox" id="select-all" class="rounded border-slate-300 dark:border-slate-600 text-indigo-600 focus:ring-indigo-500 dark:bg-[#0A1930]">
+                                <span>Pilih Semua</span>
+                            </label>
+                            <div class="flex gap-2">
+                                <button type="button" onclick="confirmDeleteSelected()" class="px-3 py-1.5 bg-rose-50 text-rose-600 dark:bg-rose-500/10 dark:text-rose-400 border border-rose-200 dark:border-rose-500/20 rounded-lg hover:bg-rose-100 dark:hover:bg-rose-500/20 transition-colors text-xs font-semibold flex items-center shadow-sm whitespace-nowrap">
+                                    <svg class="w-4 h-4 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                                    Hapus Terpilih
+                                </button>
+                                <button type="button" onclick="confirmDeleteAll()" class="px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-lg transition-colors text-xs font-semibold flex items-center shadow-sm whitespace-nowrap">
+                                    <svg class="w-4 h-4 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                                    Hapus Semua
+                                </button>
+                                <input type="hidden" name="delete_all" id="delete_all_input" value="0">
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            @forelse($histories as $history)
+                                <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-700/50 bg-slate-50 dark:bg-[#112240]/40 flex gap-4">
+                                    <div class="pt-0.5">
+                                        <input type="checkbox" name="history_ids[]" value="{{ $history->id }}" class="history-checkbox rounded border-slate-300 dark:border-slate-600 text-indigo-600 focus:ring-indigo-500 dark:bg-[#0A1930]">
+                                    </div>
+                                    <div class="flex-1 overflow-hidden">
+                                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
+                                            <div class="text-sm text-slate-600 dark:text-slate-400">
+                                                <span class="font-semibold text-slate-800 dark:text-slate-200">Waktu Eksekusi:</span> 
+                                                <span class="local-time font-medium text-slate-900 dark:text-slate-100" data-timestamp="{{ $history->created_at->toIso8601String() }}">
+                                                    {{ $history->created_at->format('d M Y, H:i:s') }}
+                                                </span>
+                                            </div>
+                                            <div>
+                                                @if($history->status === 'Sukses')
+                                                    <span class="px-2.5 py-1 text-xs font-semibold rounded-md bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300">
+                                                        Sukses
+                                                    </span>
+                                                @else
+                                                    <span class="px-2.5 py-1 text-xs font-semibold rounded-md bg-rose-100 text-rose-700 dark:bg-rose-500/20 dark:text-rose-300">
+                                                        Gagal
+                                                    </span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        
+                                        @if($history->screenshot_path)
+                                            <div class="mb-3">
+                                                <p class="text-sm font-semibold text-slate-800 dark:text-slate-200 mb-2">Tangkapan Layar (Error):</p>
+                                                <a href="{{ asset('screenshots/' . $history->screenshot_path) }}" target="_blank" title="Klik untuk memperbesar">
+                                                    <img src="{{ asset('screenshots/' . $history->screenshot_path) }}" alt="Screenshot Error" class="max-w-full h-auto rounded-lg border border-slate-300 dark:border-slate-700 hover:opacity-90 transition-opacity" style="max-height: 200px; object-fit: contain;">
+                                                </a>
+                                            </div>
+                                        @endif
+
+                                        <details class="group">
+                                            <summary class="cursor-pointer text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">
+                                                Lihat Log Terminal
+                                            </summary>
+                                            <div class="mt-3 p-3 bg-slate-900 text-emerald-400 font-mono text-xs rounded-lg overflow-x-auto shadow-inner">
+                                                <pre class="whitespace-pre-wrap">{{ $history->log_output }}</pre>
+                                            </div>
+                                        </details>
+                                    </div>
+                                </div>
+                            @empty
+                                <p class="text-sm text-slate-500 dark:text-slate-400 text-center py-4">Belum ada riwayat eksekusi untuk skenario ini (atau sesuai filter).</p>
+                            @endforelse
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
+    
+    <script>
+        function initHistoryPanel() {
+            const timeElements = document.querySelectorAll('.local-time');
+            if (timeElements.length > 0) {
+                const formatter = new Intl.DateTimeFormat('id-ID', {
+                    weekday: 'long', 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric',
+                    hour: '2-digit', 
+                    minute: '2-digit', 
+                    second: '2-digit',
+                    timeZoneName: 'short'
+                });
+
+                timeElements.forEach(el => {
+                    const timestamp = el.getAttribute('data-timestamp');
+                    if (timestamp) {
+                        try {
+                            const dateObj = new Date(timestamp);
+                            el.textContent = formatter.format(dateObj);
+                        } catch (e) {
+                            console.error('Invalid date', timestamp);
+                        }
+                    }
+                });
+            }
+
+            const selectAllCheckbox = document.getElementById('select-all');
+            const historyCheckboxes = document.querySelectorAll('.history-checkbox');
+            
+            if (selectAllCheckbox) {
+                selectAllCheckbox.addEventListener('change', function() {
+                    historyCheckboxes.forEach(cb => cb.checked = this.checked);
+                });
+            }
+
+            historyCheckboxes.forEach(cb => {
+                cb.addEventListener('change', function() {
+                    const allChecked = Array.from(historyCheckboxes).length > 0 && Array.from(historyCheckboxes).every(c => c.checked);
+                    const someChecked = Array.from(historyCheckboxes).some(c => c.checked);
+                    if (selectAllCheckbox) {
+                        selectAllCheckbox.checked = allChecked;
+                        selectAllCheckbox.indeterminate = someChecked && !allChecked;
+                    }
+                });
+            });
+        }
+        
+        document.addEventListener('turbo:load', initHistoryPanel);
+        document.addEventListener('DOMContentLoaded', initHistoryPanel);
+
+        function confirmDeleteSelected() {
+            const checked = document.querySelectorAll('.history-checkbox:checked');
+            if (checked.length === 0) {
+                alert('Silakan pilih setidaknya satu riwayat yang ingin dihapus.');
+                return;
+            }
+            if (confirm(`Apakah Anda yakin ingin menghapus ${checked.length} riwayat yang dipilih?`)) {
+                document.getElementById('delete_all_input').value = '0';
+                document.getElementById('delete-form').submit();
+            }
+        }
+
+        function confirmDeleteAll() {
+            if (confirm('PERINGATAN: Apakah Anda yakin ingin menghapus SELURUH riwayat eksekusi skenario ini? Tindakan ini tidak dapat dibatalkan.')) {
+                document.getElementById('delete_all_input').value = '1';
+                document.getElementById('delete-form').submit();
+            }
+        }
+    </script>
+    <style>
+        .dark input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+        }
+    </style>
 </x-app-layout>

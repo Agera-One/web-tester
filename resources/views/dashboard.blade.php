@@ -1,4 +1,24 @@
 <x-app-layout>
+@php
+    function formatTrend($trend) {
+        if ($trend > 0) return '+' . number_format($trend, 1) . '%';
+        if ($trend < 0) return number_format($trend, 1) . '%';
+        return '0%';
+    }
+    
+    function trendColorClass($trend, $inverse = false) {
+        if ($trend > 0) return $inverse ? 'text-rose-500' : 'text-emerald-500';
+        if ($trend < 0) return $inverse ? 'text-emerald-500' : 'text-rose-500';
+        return 'text-slate-400';
+    }
+    
+    function trendIcon($trend) {
+        if ($trend > 0) return '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>'; // Up
+        if ($trend < 0) return '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path>'; // Down
+        return '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14"></path>'; // Flat
+    }
+@endphp
+
     <x-slot name="header">
         <h2 class="font-bold text-2xl tracking-tight text-slate-800 dark:text-slate-100">
             Overview
@@ -15,16 +35,16 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-1">Total Run Hari Ini</p>
-                    <h3 class="text-3xl font-bold text-slate-800 dark:text-slate-100">348</h3>
+                    <h3 class="text-3xl font-bold text-slate-800 dark:text-slate-100">{{ number_format($summary['totalRunToday']) }}</h3>
                 </div>
                 <div class="w-14 h-14 rounded-2xl flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 text-[#5B58EB] dark:text-[#56E1E9]">
                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 </div>
             </div>
             <div class="mt-4 flex items-center text-sm">
-                <span class="text-emerald-500 flex items-center font-medium">
-                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-                    12.5%
+                <span class="{{ trendColorClass($summary['runTrend']) }} flex items-center font-medium">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">{!! trendIcon($summary['runTrend']) !!}</svg>
+                    {{ formatTrend($summary['runTrend']) }}
                 </span>
                 <span class="text-slate-400 ml-2">dari kemarin</span>
             </div>
@@ -37,16 +57,16 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-1">Pass Rate</p>
-                    <h3 class="text-3xl font-bold text-slate-800 dark:text-slate-100">92.4%</h3>
+                    <h3 class="text-3xl font-bold text-slate-800 dark:text-slate-100">{{ number_format($summary['passRate'], 1) }}%</h3>
                 </div>
                 <div class="w-14 h-14 rounded-2xl flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 text-emerald-500">
                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 </div>
             </div>
             <div class="mt-4 flex items-center text-sm">
-                <span class="text-emerald-500 flex items-center font-medium">
-                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-                    2.1%
+                <span class="{{ trendColorClass($summary['passRateTrend']) }} flex items-center font-medium">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">{!! trendIcon($summary['passRateTrend']) !!}</svg>
+                    {{ formatTrend($summary['passRateTrend']) }}
                 </span>
                 <span class="text-slate-400 ml-2">dari minggu lalu</span>
             </div>
@@ -58,41 +78,40 @@
             
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-1">Test Gagal</p>
-                    <h3 class="text-3xl font-bold text-slate-800 dark:text-slate-100">26</h3>
+                    <p class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-1">Total Test Gagal</p>
+                    <h3 class="text-3xl font-bold text-slate-800 dark:text-slate-100">{{ number_format($summary['totalFailedToday']) }}</h3>
                 </div>
                 <div class="w-14 h-14 rounded-2xl flex items-center justify-center bg-rose-50 dark:bg-rose-900/20 text-rose-500">
                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 </div>
             </div>
             <div class="mt-4 flex items-center text-sm">
-                <span class="text-rose-500 flex items-center font-medium">
-                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path></svg>
-                    4.3%
+                <span class="{{ trendColorClass($summary['failedTrend'], true) }} flex items-center font-medium">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">{!! trendIcon($summary['failedTrend']) !!}</svg>
+                    {{ formatTrend($summary['failedTrend']) }}
                 </span>
                 <span class="text-slate-400 ml-2">dari kemarin</span>
             </div>
         </div>
 
-        <!-- Card 4: Total Scenarios -->
+        <!-- Card 4: Active Runs -->
         <div class="bg-white dark:bg-[#0A1930] rounded-2xl shadow-lg shadow-slate-200/40 dark:shadow-none p-6 border border-slate-100 dark:border-slate-800/60 relative overflow-hidden group">
             <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#112C71] via-[#5B58EB] to-[#56E1E9] opacity-80 group-hover:opacity-100 transition-opacity"></div>
             
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-1">Total Skenario</p>
-                    <h3 class="text-3xl font-bold text-slate-800 dark:text-slate-100">1,248</h3>
+                    <p class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-1">Eksekusi Aktif</p>
+                    <h3 class="text-3xl font-bold text-slate-800 dark:text-slate-100">{{ number_format($summary['activeRuns']) }}</h3>
                 </div>
-                <div class="w-14 h-14 rounded-2xl flex items-center justify-center bg-purple-50 dark:bg-purple-900/20 text-purple-500">
-                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                <div class="w-14 h-14 rounded-2xl flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 text-amber-500">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                 </div>
             </div>
             <div class="mt-4 flex items-center text-sm">
-                <span class="text-emerald-500 flex items-center font-medium">
-                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
-                    12 Skenario
+                <span class="text-amber-500 flex items-center font-medium">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    Berjalan / Antre
                 </span>
-                <span class="text-slate-400 ml-2">baru bulan ini</span>
             </div>
         </div>
     </div>
@@ -101,41 +120,252 @@
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div class="lg:col-span-2 bg-white dark:bg-[#0A1930] rounded-2xl shadow-lg shadow-slate-200/40 dark:shadow-none p-6 border border-slate-100 dark:border-slate-800/60">
             <div class="flex items-center justify-between mb-6">
-                <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100">Statistik Eksekusi</h3>
-                <button class="text-sm font-medium text-[#5B58EB] dark:text-[#56E1E9] hover:underline">Lihat Detail</button>
+                <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100">Statistik Eksekusi (7 Hari Terakhir)</h3>
+                <a href="{{ route('runs.index') }}" class="text-sm font-medium text-[#5B58EB] dark:text-[#56E1E9] hover:underline">Lihat Detail</a>
             </div>
-            <div class="h-64 flex items-center justify-center border-2 border-dashed border-slate-200 dark:border-slate-700/50 rounded-xl text-slate-400 dark:text-slate-500">
-                [ Area Chart Visualisasi ]
+            <div class="relative w-full h-72">
+                <canvas id="executionChart"></canvas>
             </div>
         </div>
         
-        <div class="bg-white dark:bg-[#0A1930] rounded-2xl shadow-lg shadow-slate-200/40 dark:shadow-none p-6 border border-slate-100 dark:border-slate-800/60">
+        <div class="bg-white dark:bg-[#0A1930] rounded-2xl shadow-lg shadow-slate-200/40 dark:shadow-none p-6 border border-slate-100 dark:border-slate-800/60 flex flex-col">
             <div class="flex items-center justify-between mb-6">
                 <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100">Status Environment</h3>
             </div>
-            <div class="space-y-4">
+            <div class="space-y-4 flex-1 max-h-72 overflow-y-auto pr-2">
+                @forelse($environments as $env)
                 <div class="flex items-center justify-between p-4 bg-slate-50 dark:bg-[#112240] rounded-xl">
                     <div class="flex items-center">
                         <div class="w-3 h-3 rounded-full bg-emerald-500 mr-3"></div>
-                        <span class="font-medium text-slate-700 dark:text-slate-300">Production</span>
+                        <span class="font-medium text-slate-700 dark:text-slate-300">{{ $env->name }}</span>
                     </div>
                     <span class="text-xs font-semibold px-2.5 py-1 bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 rounded-lg">Online</span>
                 </div>
-                <div class="flex items-center justify-between p-4 bg-slate-50 dark:bg-[#112240] rounded-xl">
-                    <div class="flex items-center">
-                        <div class="w-3 h-3 rounded-full bg-emerald-500 mr-3"></div>
-                        <span class="font-medium text-slate-700 dark:text-slate-300">Staging</span>
-                    </div>
-                    <span class="text-xs font-semibold px-2.5 py-1 bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 rounded-lg">Online</span>
+                @empty
+                <div class="text-sm text-slate-500 dark:text-slate-400 text-center py-8">
+                    Belum ada Environment yang dikonfigurasi.
                 </div>
-                <div class="flex items-center justify-between p-4 bg-slate-50 dark:bg-[#112240] rounded-xl">
-                    <div class="flex items-center">
-                        <div class="w-3 h-3 rounded-full bg-rose-500 mr-3 shadow-[0_0_8px_rgba(244,63,94,0.6)]"></div>
-                        <span class="font-medium text-slate-700 dark:text-slate-300">Dev</span>
-                    </div>
-                    <span class="text-xs font-semibold px-2.5 py-1 bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-400 rounded-lg">Error</span>
-                </div>
+                @endforelse
             </div>
         </div>
     </div>
+    
+    <!-- New Panels -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+        
+        <!-- Panel 1: 10 Latest Runs -->
+        <div class="lg:col-span-2 bg-white dark:bg-[#0A1930] rounded-2xl shadow-lg shadow-slate-200/40 dark:shadow-none p-6 border border-slate-100 dark:border-slate-800/60">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100">10 Riwayat Eksekusi Terakhir</h3>
+                <a href="{{ route('runs.index') }}" class="text-sm font-medium text-[#5B58EB] dark:text-[#56E1E9] hover:underline">Semua Riwayat</a>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-slate-100 dark:divide-slate-800/60">
+                    <thead>
+                        <tr>
+                            <th class="py-3 px-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">ID</th>
+                            <th class="py-3 px-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Status</th>
+                            <th class="py-3 px-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Waktu Mulai</th>
+                            <th class="py-3 px-4 text-right text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 dark:divide-slate-800/60">
+                        @forelse($latestRuns as $run)
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+                                <td class="py-3 px-4 text-sm font-medium text-slate-900 dark:text-slate-200">#{{ $run->id }}</td>
+                                <td class="py-3 px-4">
+                                    @php
+                                        $badgeClasses = 'bg-slate-100 text-slate-700 dark:bg-slate-900/40 dark:text-slate-400';
+                                        if ($run->status === 'passed') $badgeClasses = 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400';
+                                        elseif ($run->status === 'failed' || $run->status === 'error') $badgeClasses = 'bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-400';
+                                        elseif ($run->status === 'running') $badgeClasses = 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-400';
+                                        elseif ($run->status === 'queued') $badgeClasses = 'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-400';
+                                    @endphp
+                                    <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold uppercase {{ $badgeClasses }}">
+                                        {{ $run->status }}
+                                    </span>
+                                </td>
+                                <td class="py-3 px-4 text-sm text-slate-500 dark:text-slate-400">{{ $run->started_at ? \Carbon\Carbon::parse($run->started_at)->format('d M Y, H:i') : '-' }}</td>
+                                <td class="py-3 px-4 text-right">
+                                    <a href="{{ route('runs.show', $run->id) }}" data-turbo="true" class="text-sm font-medium text-[#5B58EB] dark:text-[#56E1E9] hover:underline">Lihat Log</a>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="4" class="py-8 text-center text-sm text-slate-500">Belum ada riwayat eksekusi.</td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Panel 2: Last Failed Tests -->
+        <div class="bg-white dark:bg-[#0A1930] rounded-2xl shadow-lg shadow-slate-200/40 dark:shadow-none p-6 border border-slate-100 dark:border-slate-800/60 flex flex-col">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100">Daftar Test Gagal</h3>
+            </div>
+            @if($latestCompletedRun)
+                <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Eksekusi Terakhir: #{{ $latestCompletedRun->id }} ({{ \Carbon\Carbon::parse($latestCompletedRun->created_at)->diffForHumans() }})</p>
+            @endif
+            
+            <div class="space-y-3 flex-1 overflow-y-auto pr-1">
+                @forelse($lastFailedTests as $result)
+                    <div class="p-3 bg-rose-50/50 dark:bg-rose-900/10 border border-rose-100 dark:border-rose-900/30 rounded-xl">
+                        <div class="flex items-start">
+                            <svg class="w-5 h-5 shrink-0 text-rose-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                            <div>
+                                <p class="text-sm font-semibold text-slate-800 dark:text-slate-200">{{ $result->title }}</p>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 line-clamp-2" title="{{ $result->error_message }}">{{ $result->error_message }}</p>
+                            </div>
+                        </div>
+                    </div>
+                @empty
+                    <div class="flex flex-col items-center justify-center py-10 text-center h-full">
+                        <div class="w-12 h-12 rounded-full bg-emerald-50 dark:bg-emerald-900/20 flex items-center justify-center mb-3">
+                            <svg class="w-6 h-6 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <p class="text-sm font-medium text-slate-700 dark:text-slate-300">Semua test berhasil pada eksekusi terakhir.</p>
+                    </div>
+                @endforelse
+            </div>
+        </div>
+    </div>
+
+    <!-- ChartJS Script -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        function initDashboard() {
+            const ctx = document.getElementById('executionChart');
+            if (!ctx) return;
+            
+            // Hapus chart lama jika ada agar tidak tertumpuk saat navigasi SPA
+            if (window.executionChartInstance) {
+                window.executionChartInstance.destroy();
+            }
+            
+            // Mengambil style document (dark/light)
+            const isDark = document.documentElement.classList.contains('dark');
+            const textColor = isDark ? '#94a3b8' : '#64748b'; // slate-400 vs slate-500
+            const gridColor = isDark ? 'rgba(30, 41, 59, 0.5)' : 'rgba(241, 245, 249, 1)'; // slate-800 vs slate-100
+            
+            window.executionChartInstance = new Chart(ctx.getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: {!! json_encode($chartLabels) !!},
+                    datasets: [
+                        {
+                            label: 'Sukses',
+                            data: {!! json_encode($chartSuccessData) !!},
+                            borderColor: '#10b981', // emerald-500
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            borderWidth: 2,
+                            tension: 0.4,
+                            fill: true,
+                            pointBackgroundColor: '#10b981',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: '#10b981'
+                        },
+                        {
+                            label: 'Gagal',
+                            data: {!! json_encode($chartFailedData) !!},
+                            borderColor: '#f43f5e', // rose-500
+                            backgroundColor: 'rgba(244, 63, 94, 0.1)',
+                            borderWidth: 2,
+                            tension: 0.4,
+                            fill: true,
+                            pointBackgroundColor: '#f43f5e',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: '#f43f5e'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: textColor,
+                                font: {
+                                    family: "'Inter', sans-serif",
+                                    weight: 500
+                                }
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: isDark ? 'rgba(15, 23, 42, 0.9)' : 'rgba(255, 255, 255, 0.9)',
+                            titleColor: isDark ? '#f8fafc' : '#0f172a',
+                            bodyColor: isDark ? '#cbd5e1' : '#334155',
+                            borderColor: isDark ? '#334155' : '#e2e8f0',
+                            borderWidth: 1,
+                            padding: 12,
+                            boxPadding: 4,
+                            usePointStyle: true,
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false,
+                                drawBorder: false,
+                            },
+                            ticks: {
+                                color: textColor,
+                                font: {
+                                    family: "'Inter', sans-serif"
+                                }
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: gridColor,
+                                drawBorder: false,
+                            },
+                            ticks: {
+                                color: textColor,
+                                font: {
+                                    family: "'Inter', sans-serif"
+                                },
+                                stepSize: 1
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        document.addEventListener('turbo:load', initDashboard);
+        document.addEventListener('DOMContentLoaded', initDashboard);
+
+        // Auto-refresh Dashboard setiap 15 detik
+        function setupDashboardRefresh() {
+            if (window.dashboardRefreshInterval) {
+                clearInterval(window.dashboardRefreshInterval);
+            }
+            window.dashboardRefreshInterval = setInterval(() => {
+                if (window.location.pathname === '/dashboard') {
+                    if (typeof Turbo !== 'undefined') {
+                        Turbo.visit('/dashboard', { action: 'replace' });
+                    } else if (typeof Livewire !== 'undefined') {
+                        Livewire.navigate('/dashboard');
+                    } else {
+                        window.location.reload();
+                    }
+                } else {
+                    clearInterval(window.dashboardRefreshInterval);
+                }
+            }, 15000);
+        }
+
+        document.addEventListener('turbo:load', setupDashboardRefresh);
+        document.addEventListener('DOMContentLoaded', setupDashboardRefresh);
+    </script>
 </x-app-layout>

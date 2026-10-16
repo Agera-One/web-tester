@@ -5,15 +5,7 @@
             
             <!-- Left Side: Visual -->
             <div class="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-[#112C71] via-[#5B58EB] to-[#56E1E9] rounded-3xl p-12 flex-col justify-between relative overflow-hidden">
-                <!-- Top Left Asterisk -->
-                <div class="relative z-10">
-                    <svg class="w-10 h-10 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                      <line x1="12" y1="3" x2="12" y2="21"></line>
-                      <line x1="3" y1="12" x2="21" y2="12"></line>
-                      <line x1="5.636" y1="5.636" x2="18.364" y2="18.364"></line>
-                      <line x1="5.636" y1="18.364" x2="18.364" y2="5.636"></line>
-                    </svg>
-                </div>
+
                 
                 <!-- Bottom Text -->
                 <div class="text-white mt-auto relative z-10">
@@ -27,12 +19,7 @@
                 <div class="w-full max-w-md">
                     <!-- Form Header -->
                     <div class="mb-10 text-center lg:text-left">
-                        <svg class="w-8 h-8 text-[#5B58EB] mb-6 mx-auto lg:mx-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                          <line x1="12" y1="3" x2="12" y2="21"></line>
-                          <line x1="3" y1="12" x2="21" y2="12"></line>
-                          <line x1="5.636" y1="5.636" x2="18.364" y2="18.364"></line>
-                          <line x1="5.636" y1="18.364" x2="18.364" y2="5.636"></line>
-                        </svg>
+                        <img src="{{ asset('images/seventhsoft-logo.png') }}" alt="Seventhsoft Logo" class="h-10 w-auto mb-6 mx-auto lg:mx-0 object-contain">
                         <h2 class="text-3xl font-extrabold text-gray-900">Create an account</h2>
                     </div>
 

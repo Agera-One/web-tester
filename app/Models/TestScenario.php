@@ -27,4 +27,10 @@ class TestScenario extends Model
     {
         return $this->belongsTo(Environment::class);
     }
+
+    // Relasi: Setiap skenario memiliki banyak riwayat eksekusi
+    public function histories()
+    {
+        return $this->hasMany(TestRunHistory::class);
+    }
 }

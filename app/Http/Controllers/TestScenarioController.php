@@ -39,9 +39,27 @@ class TestScenarioController extends Controller
         return redirect()->route('test-scenarios.index')->with('success', 'Skenario pengujian berhasil ditambahkan.');
     }
 
-    public function show(TestScenario $testScenario)
+    public function show(Request $request, TestScenario $testScenario)
     {
-        return view('test_scenarios.show', compact('testScenario'));
+        $query = $testScenario->histories();
+
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+
+        if ($request->filled('date')) {
+            $query->whereDate('created_at', $request->date);
+        }
+
+        if ($request->sort === 'asc') {
+            $query->orderBy('created_at', 'asc');
+        } else {
+            $query->orderBy('created_at', 'desc');
+        }
+
+        $histories = $query->get();
+
+        return view('test_scenarios.show', compact('testScenario', 'histories'));
     }
 
     public function edit(TestScenario $testScenario)
@@ -164,37 +182,71 @@ class TestScenarioController extends Controller
         // Nonaktifkan batasan waktu eksekusi skrip PHP
         set_time_limit(0);
 
-        $logPath = storage_path('logs/dusk_execution.log');
-        
-        // Memastikan variabel environment diwariskan dengan benar ke proses shell_exec
-        putenv("SCENARIO_ID={$testScenario->id}");
-        putenv("TEMP=" . storage_path('framework'));
-        putenv("TMP=" . storage_path('framework'));
+        // Memastikan variabel environment diwariskan dengan benar ke proses Process
+        $env = array_merge(getenv(), $_SERVER, $_ENV, [
+            'SCENARIO_ID' => $testScenario->id,
+            'TEMP' => storage_path('framework'),
+            'TMP' => storage_path('framework'),
+            'TMPDIR' => storage_path('framework'),
+        ]);
         
         $phpBinary = PHP_BINARY;
         $phpunitPath = base_path('vendor/phpunit/phpunit/phpunit');
         $configPath = base_path('phpunit.dusk.xml');
         
-        // Bungkus path dengan tanda kutip ganda untuk menangani spasi di nama folder (Windows)
-        $command = "\"{$phpBinary}\" \"{$phpunitPath}\" -c \"{$configPath}\" --filter testDynamicScenario > \"{$logPath}\" 2>&1";
+        $command = [$phpBinary, $phpunitPath, '-c', $configPath, '--filter', 'testDynamicScenario'];
         
-        // Eksekusi langsung ke sistem operasi tanpa menunggu pipes tertutup sepenuhnya
-        shell_exec($command);
+        // Cek screenshot sebelum eksekusi
+        $screenshotDir = public_path('screenshots');
+        if (!file_exists($screenshotDir)) {
+            mkdir($screenshotDir, 0755, true);
+        }
+        $screenshotsBefore = scandir($screenshotDir);
 
-        // Membaca log hasil eksekusi
-        $fullOutput = file_exists($logPath) ? file_get_contents($logPath) : 'Gagal membaca log eksekusi.';
-        
-        // Cek jika log menunjukkan gagal
-        $isError = str_contains($fullOutput, 'FAILURES!') || str_contains($fullOutput, 'ERRORS!') || str_contains($fullOutput, 'Exception');
+        $process = new \Symfony\Component\Process\Process($command, base_path(), $env);
+        $process->setTimeout(null);
+        $process->run();
 
-        if (!$isError) {
+        // Cek screenshot setelah eksekusi
+        $screenshotsAfter = scandir($screenshotDir);
+        $newScreenshots = array_diff($screenshotsAfter, $screenshotsBefore);
+        $screenshotPath = count($newScreenshots) > 0 ? reset($newScreenshots) : null;
+
+        $status = $process->isSuccessful() ? 'Sukses' : 'Gagal';
+        $logOutput = $process->getOutput() . "\n" . $process->getErrorOutput();
+
+        $testScenario->histories()->create([
+            'status' => $status,
+            'log_output' => $logOutput,
+            'screenshot_path' => $screenshotPath,
+        ]);
+
+        if ($process->isSuccessful()) {
             return redirect()->route('test-scenarios.show', $testScenario)
-                             ->with('success', 'Pengujian selesai dan berhasil dilewati tanpa kendala!')
-                             ->with('dusk_output', $fullOutput);
+                             ->with('success', 'Pengujian selesai dan berhasil dilewati tanpa kendala!');
         } else {
             return redirect()->route('test-scenarios.show', $testScenario)
-                             ->with('error', 'Pengujian gagal atau ditemukan kesalahan pada salah satu langkah.')
-                             ->with('dusk_output', $fullOutput);
+                             ->with('error', 'Pengujian gagal atau ditemukan kesalahan pada salah satu langkah.');
         }
+    }
+
+    /**
+     * Menghapus riwayat eksekusi skenario pengujian.
+     */
+    public function destroyHistories(Request $request, TestScenario $testScenario)
+    {
+        if ($request->has('delete_all') && $request->delete_all == '1') {
+            $testScenario->histories()->delete();
+            return redirect()->route('test-scenarios.show', $testScenario)->with('success', 'Seluruh riwayat eksekusi berhasil dihapus.');
+        }
+
+        $request->validate([
+            'history_ids' => 'required|array',
+            'history_ids.*' => 'exists:test_run_histories,id'
+        ]);
+
+        $testScenario->histories()->whereIn('id', $request->history_ids)->delete();
+
+        return redirect()->route('test-scenarios.show', $testScenario)->with('success', 'Riwayat eksekusi yang dipilih berhasil dihapus.');
     }
 }
