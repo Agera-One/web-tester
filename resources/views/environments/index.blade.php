@@ -23,12 +23,12 @@
             <div class="bg-white dark:bg-[#0A1930] overflow-hidden shadow-md rounded-2xl border border-slate-200 dark:border-slate-800/50">
                 <div class="overflow-x-auto">
                     <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr class="bg-slate-100 dark:bg-[#112240] border-b border-slate-200 dark:border-slate-800/80">
-                                <th class="px-6 py-4 font-semibold text-sm text-slate-700 dark:text-slate-300">Nama Target</th>
-                                <th class="px-6 py-4 font-semibold text-sm text-slate-700 dark:text-slate-300">URL Akses</th>
-                                <th class="px-6 py-4 font-semibold text-sm text-slate-700 dark:text-slate-300">Nama Pengguna</th>
-                                <th class="px-6 py-4 font-semibold text-sm text-slate-700 dark:text-slate-300">Aksi</th>
+                        <thead class="bg-slate-50 dark:bg-slate-800/40">
+                            <tr class="border-b border-slate-200 dark:border-slate-700/60">
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Nama Target</th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">URL Akses</th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Nama Pengguna</th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Aksi</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-200 dark:divide-slate-800/50">

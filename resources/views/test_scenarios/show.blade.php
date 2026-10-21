@@ -55,13 +55,13 @@
                     <!-- Tabel Daftar Langkah -->
                     <div class="overflow-x-auto mb-8">
                         <table class="w-full text-left border-collapse">
-                            <thead>
-                                <tr class="border-b border-slate-200 dark:border-slate-700 text-sm text-slate-500 dark:text-slate-400">
-                                    <th class="pb-3 font-medium px-4 w-16">No</th>
-                                    <th class="pb-3 font-medium px-4">Tindakan (Action)</th>
-                                    <th class="pb-3 font-medium px-4">Target (URL/Elemen)</th>
-                                    <th class="pb-3 font-medium px-4">Nilai Input</th>
-                                    <th class="pb-3 font-medium px-4 text-right">Opsi</th>
+                            <thead class="bg-slate-50 dark:bg-slate-800/40">
+                                <tr class="border-b border-slate-200 dark:border-slate-700/60">
+                                    <th scope="col" class="px-4 py-3 text-left text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider w-16">No</th>
+                                    <th scope="col" class="px-4 py-3 text-left text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Tindakan (Action)</th>
+                                    <th scope="col" class="px-4 py-3 text-left text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Target (URL/Elemen)</th>
+                                    <th scope="col" class="px-4 py-3 text-left text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Nilai Input</th>
+                                    <th scope="col" class="px-4 py-3 text-right text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Opsi</th>
                                 </tr>
                             </thead>
                             <tbody class="text-sm">

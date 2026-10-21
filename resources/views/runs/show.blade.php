@@ -65,12 +65,12 @@
                     <h4 class="text-md font-semibold text-gray-800 dark:text-gray-200 mb-4">Hasil Pengujian</h4>
                     <div class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-x-auto">
                         <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                            <thead class="bg-gray-50 dark:bg-slate-700/50">
-                                <tr>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Test Case</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Status</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Durasi</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Error</th>
+                            <thead class="bg-slate-50 dark:bg-slate-800/40">
+                                <tr class="border-b border-slate-200 dark:border-slate-700/60">
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Test Case</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Status</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Durasi</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Error</th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white dark:bg-slate-800 divide-y divide-gray-200 dark:divide-gray-700" id="results-tbody">

@@ -61,4 +61,56 @@ class TestController extends TestCatalogController
 
         return redirect()->route('tests.index')->with($syncResult['success'] ? 'success' : 'warning', $message);
     }
+
+    public function edit(Request $request)
+    {
+        $filename = $request->query('file');
+        $path = base_path('tests-e2e/specs/' . $filename);
+
+        if (!File::exists($path)) {
+            return redirect()->route('tests.index')->with('error', 'File skenario tidak ditemukan.');
+        }
+
+        $content = File::get($path);
+        return view('tests.edit', compact('filename', 'content'));
+    }
+
+    public function update(Request $request)
+    {
+        $filename = $request->input('file');
+        $path = base_path('tests-e2e/specs/' . $filename);
+        
+        $content = $request->input('content', $request->input('isi_skrip'));
+
+        // Menimpa isi file lama dengan kode yang baru
+        File::put($path, $content);
+
+        // Sinkronisasi katalog agar data kasus uji langsung diperbarui
+        $this->performSync();
+
+        return redirect()->route('tests.index')->with('success', 'Skenario berhasil diperbarui!');
+    }
+
+    public function destroy(Request $request)
+    {
+        $filename = $request->input('file');
+        $path = base_path('tests-e2e/specs/' . $filename);
+
+        if (File::exists($path)) {
+            // Menghapus file fisik dari direktori
+            File::delete($path);
+
+            $suite = \App\Models\TestSuite::where('title', $filename)
+                ->orWhere('file_path', 'like', '%' . $filename)
+                ->first();
+
+            if ($suite) {
+                \App\Models\TestCase::where('test_suite_id', $suite->id)->delete();
+                $suite->delete();
+            }
+
+            return redirect()->route('tests.index')->with('success', 'Skenario berhasil dihapus!');
+        }
+        return redirect()->route('tests.index')->with('error', 'Skenario gagal dihapus.');
+    }
 }

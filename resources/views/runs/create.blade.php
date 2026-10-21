@@ -9,7 +9,7 @@
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-xl dark:bg-slate-800 sm:rounded-lg p-6">
                 
-                <form action="{{ route('runs.store') }}" method="POST" x-data="{ scopeType: 'all' }">
+                <form action="{{ route('runs.store') }}" method="POST" x-data="{ scopeType: '{{ request('suite_id') ? 'suite' : 'all' }}' }">
                     @csrf
                     
                     @if ($errors->any())
@@ -34,12 +34,12 @@
                         </select>
                     </div>
 
-                    <div class="mb-5 transition-all duration-300 ease-in-out" x-show="scopeType === 'suite'" style="display: none;">
+                    <div class="mb-5 transition-all duration-300 ease-in-out" x-show="scopeType === 'suite'" style="{{ request('suite_id') ? '' : 'display: none;' }}">
                         <label class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">Pilih Test Suite</label>
                         <select name="suite_id" class="block w-full rounded-lg border-gray-300 bg-gray-50 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-slate-900 dark:border-slate-700 dark:text-white transition-colors duration-200">
                             <option value="">-- Pilih Skenario --</option>
                             @foreach($suites as $suite)
-                                <option value="{{ $suite->id }}">{{ $suite->title }} ({{ $suite->module }})</option>
+                                <option value="{{ $suite->id }}" {{ (string)request('suite_id') === (string)$suite->id ? 'selected' : '' }}>{{ $suite->title }} ({{ $suite->module }})</option>
                             @endforeach
                         </select>
                     </div>

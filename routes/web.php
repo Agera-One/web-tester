@@ -13,6 +13,7 @@ Route::get('/', function () {
 use App\Http\Controllers\DashboardController;
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'is_active'])->name('dashboard');
+Route::get('/dashboard/live-data', [DashboardController::class, 'liveData'])->middleware(['auth', 'is_active'])->name('dashboard.live-data');
 
 // Rute untuk manajemen pengguna (Khusus Admin)
 Route::middleware(['auth', 'is_active', 'role:admin'])->group(function () {
@@ -39,6 +40,9 @@ Route::middleware(['auth', 'is_active', 'role:admin,developer,qa'])->group(funct
     Route::get('/tests/create', [TestController::class, 'create'])->name('tests.create');
     Route::post('/tests', [TestController::class, 'store'])->name('tests.store');
     Route::post('/tests/sync', [App\Http\Controllers\TestCatalogController::class, 'sync'])->name('tests.sync');
+    Route::get('/tests/edit', [TestController::class, 'edit'])->name('tests.edit');
+Route::put('/tests/update', [TestController::class, 'update'])->name('tests.update');
+Route::delete('/tests/destroy', [TestController::class, 'destroy'])->name('tests.destroy');
 
     // Eksekusi Run Playwright
     Route::get('/runs', [App\Http\Controllers\RunController::class, 'index'])->name('runs.index');
@@ -47,10 +51,19 @@ Route::middleware(['auth', 'is_active', 'role:admin,developer,qa'])->group(funct
     Route::get('/runs/{id}', [App\Http\Controllers\RunController::class, 'show'])->name('runs.show');
     Route::get('/runs/{id}/status', [App\Http\Controllers\RunController::class, 'status'])->name('runs.status');
     Route::post('/runs/{id}/cancel', [App\Http\Controllers\RunController::class, 'cancel'])->name('runs.cancel');
+    
     // Penjadwalan Otomatis (Scheduler)
     Route::resource('schedules', App\Http\Controllers\ScheduleController::class);
     Route::post('/schedules/{schedule}/toggle', [App\Http\Controllers\ScheduleController::class, 'toggle'])->name('schedules.toggle');
     Route::post('/schedules/{schedule}/run-now', [App\Http\Controllers\ScheduleController::class, 'runNow'])->name('schedules.run-now');
+
+    // Pengaturan Akun (Profile)
+    Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+    Route::post('/profile/avatar', [App\Http\Controllers\ProfileController::class, 'updateAvatar'])->name('profile.avatar.update');
+    Route::delete('/profile/avatar', [App\Http\Controllers\ProfileController::class, 'destroyAvatar'])->name('profile.avatar.destroy');
+    Route::put('/profile/password', [App\Http\Controllers\ProfileController::class, 'updatePassword'])->name('profile.password');
+
 });
 
 require __DIR__.'/auth.php';
