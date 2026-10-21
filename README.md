@@ -1,64 +1,74 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# SeventhSoft Web Tester
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi *Automatic Testing End-to-End* (E2E) untuk modul ERP SeventhSoft (web-new). Dibangun menggunakan antarmuka **Laravel 8** untuk manajemen eksekusi, serta **Playwright** dan peramban **Chromium** di latar belakang untuk melakukan pengujian otomatis layaknya interaksi pengguna asli.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 Panduan Instalasi (Local/Server)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Pastikan sistem Anda telah terpasang **PHP 7.4 / 8.0**, **MySQL 5.5+**, dan **Node.js 18+**.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1. **Kloning Repositori & Instalasi Dependensi**
+   ```bash
+   git clone <url-repo-web-tester>
+   cd web-tester
+   composer install
+   npm install
+   ```
 
-## Learning Laravel
+2. **Konfigurasi Environment**  
+   Salin file konfigurasi dan buat application key:
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+   Atur kredensial pangkalan data (`DB_DATABASE=web_tester`) dan kredensial Telegram (`TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`) di dalam `.env`.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+3. **Migrasi Pangkalan Data**
+   ```bash
+   php artisan migrate
+   ```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+4. **Instalasi Peramban Playwright**  
+   Karena aplikasi ini menggunakan mode headless, pasang Chromium beserta dependensinya:
+   ```bash
+   npx playwright install --with-deps chromium
+   ```
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## ⚙️ Cara Menjalankan Aplikasi
 
-### Premium Partners
+Aplikasi Web Tester memerlukan beberapa proses yang berjalan secara bersamaan agar antrian pengujian dan penjadwalan (scheduler) berfungsi penuh.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+1. **Menjalankan Server Web (Lokal)**
+   ```bash
+   php artisan serve
+   ```
 
-## Contributing
+2. **Menjalankan Pekerja Antrean (Queue Worker)**  
+   Wajib dijalankan agar aplikasi dapat mengeksekusi Playwright saat tombol "Run" ditekan. Gunakan batas waktu 3000 detik (50 menit) karena pengujian E2E memakan waktu:
+   ```bash
+   php artisan queue:listen --timeout=3000
+   ```
+   *(Catatan Server: Pada server produksi, gunakan Supervisor agar proses ini berjalan abadi di latar belakang).*
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+3. **Menjalankan Penjadwalan Otomatis (Cron Job)**  
+   Agar fitur eksekusi otomatis jam 00:00 berjalan, tambahkan baris berikut ke konfigurasi Cron di server:
+   ```bash
+   * * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
+   ```
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 📝 Konvensi & Tata Cara Penulisan Skenario Baru
 
-## Security Vulnerabilities
+Semua skenario pengujian disimpan di dalam folder `tests-e2e/specs/`. Saat membuat file `.spec.ts` baru (baik via IDE maupun fitur "Tambah Skenario" di web), patuhi aturan berikut:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- **Pemilahan Direktori**: Satu file `.spec.ts` digunakan khusus untuk satu halaman/fitur web-new, dan diletakkan di dalam folder modulnya masing-masing (misal: `specs/sales/`).
+- **Penamaan Judul & Tag**: Gunakan Bahasa Indonesia untuk deskripsi tes dan tambahkan tag di akhir judul untuk mempermudah filter (contoh: `test('Dapat menyimpan faktur penjualan @sales @critical', ...)`).
+- **Optimasi Login**: Gunakan modul helper bawaan untuk otentikasi. Jangan melakukan penulisan skrip login berulang-ulang di setiap baris tes.
+- **Penggunaan Page Object**: Gunakan metode Page Object agar selector elemen (seperti tombol dan input) tidak tersebar acak di dalam skrip skenario.
+- **Prioritas Selector Playwright**: Gunakan atribut identifikasi dengan urutan prioritas: `id` / `name` > teks tombol > CSS. Hindari penggunaan XPath yang terlalu panjang dan rentan patah jika UI berubah.
+- **Penanda Data Uji**: Jika tes melakukan penambahan data (misal: membuat Purchase Order baru), sisipkan penanda pada kolom keterangan, misalnya `E2E-<timestamp>`, agar data sampah mudah dibersihkan nantinya.
+- **Independensi Tes**: Setiap blok tes (`test()`) harus mampu berjalan sendiri secara mandiri tanpa bergantung pada urutan keberhasilan tes lainnya.

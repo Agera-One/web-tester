@@ -8,11 +8,13 @@ test.describe('Modul Master Barang', () => {
   });
 
   test('Dapat memuat halaman daftar barang dengan benar @smoke', async ({ page }) => {
-    // Sesuaikan '/master-barang' dengan URL rute asli di SeventhSoft
-    await page.goto('/master-barang');
-    
-    // Validasi URL dan pastikan judul halamannya muncul
+    // 1. Ambil URL target dari environment
+    const baseUrl = process.env.BASE_URL || 'https://web-new.seventhsoft.id';
+
+    // 2. Lakukan navigasi menggunakan URL yang telah digabung secara utuh
+    await page.goto(`${baseUrl}/master-barang`);
+
+    // 3. Validasi keberhasilan pemuatan rute target
     await expect(page).toHaveURL(/.*master-barang/);
-    // await expect(page.locator('h1')).toContainText('Daftar Barang'); 
   });
 });
