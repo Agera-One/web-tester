@@ -47,14 +47,35 @@ class RunPlaywrightJob implements ShouldQueue
      */
     public function handle()
     {
+        // 1. Lewati jika pengujian sudah dibatalkan saat masih dalam antrean (PRD Section 6.5)
+        $this->testRun->refresh();
+        if ($this->testRun->status === 'cancelled') {
+            return;
+        }
+
         try {
             \App\Services\PlaywrightRunner::run($this->testRun);
+
+            // 2. Cek kembali jika dibatalkan di tengah eksekusi
+            $this->testRun->refresh();
+            if ($this->testRun->status === 'cancelled') {
+                return;
+            }
+
             \App\Services\ResultParser::parse($this->testRun);
 
-            // Kirim laporan hasil pengujian ke Telegram
+            // Kirim laporan hasil pengujian ke Telegram jika selesai normal
             $this->testRun->refresh();
-            TelegramService::sendTestReport($this->testRun);
+            if ($this->testRun->status !== 'cancelled') {
+                TelegramService::sendTestReport($this->testRun);
+            }
         } catch (\Throwable $e) {
+            // Jangan ubah status jika run dihentikan/dibatalkan secara sengaja oleh pengguna
+            $this->testRun->refresh();
+            if ($this->testRun->status === 'cancelled') {
+                return;
+            }
+
             // Pembaruan langsung ke DB agar tidak memicu error Model tambahan
             \Illuminate\Support\Facades\DB::table('test_runs')
                 ->where('id', $this->testRun->id)
@@ -80,6 +101,11 @@ class RunPlaywrightJob implements ShouldQueue
     public function failed(\Throwable $exception = null)
     {
         if ($this->testRun) {
+            $this->testRun->refresh();
+            if ($this->testRun->status === 'cancelled') {
+                return;
+            }
+
             \Illuminate\Support\Facades\DB::table('test_runs')
                 ->where('id', $this->testRun->id)
                 ->whereIn('status', ['queued', 'running'])

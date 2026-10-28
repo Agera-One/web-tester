@@ -68,7 +68,7 @@
                     </a>
 
                     <!-- Riwayat Run -->
-                    @php $isRunsHistory = request()->routeIs('runs.index') || request()->routeIs('runs.show'); @endphp
+                    @php $isRunsHistory = request()->routeIs('runs.index') || request()->routeIs('runs.show') || request()->routeIs('runs.report'); @endphp
                     <a href="{{ route('runs.index') }}" data-turbo="true" class="flex items-center px-3 py-3 rounded-xl transition-colors group {{ $isRunsHistory ? 'bg-[#5B58EB]/10 text-[#5B58EB] dark:text-[#56E1E9] font-semibold' : 'text-slate-600 dark:text-slate-400 hover:bg-[#5B58EB]/10 hover:text-[#5B58EB] dark:hover:text-[#56E1E9]' }}">
                         <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         <span x-show="sidebarExpanded" x-transition.opacity.duration.300ms class="ml-4 whitespace-nowrap {{ $isRunsHistory ? '' : 'font-medium' }}" style="display: none;">Riwayat Run</span>

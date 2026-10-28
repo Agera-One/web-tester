@@ -15,7 +15,7 @@ test.describe('Modul Faktur Penjualan', () => {
     await page.waitForLoadState('domcontentloaded');
   });
 
-  test('Dapat memuat halaman daftar faktur penjualan dengan benar', async ({ page }) => {
+  test('Dapat memuat halaman daftar faktur penjualan dengan benar @sales @smoke', async ({ page }) => {
     // Verifikasi judul halaman
     await expect(page).toHaveTitle(/.*Seventhsoft.*/i);
 
@@ -28,7 +28,7 @@ test.describe('Modul Faktur Penjualan', () => {
     await expect(dataTable).toBeVisible({ timeout: 10000 });
   });
 
-  test('Dapat membuka form tambah faktur penjualan baru', async ({ page }) => {
+  test('Dapat membuka form tambah faktur penjualan baru @sales @critical', async ({ page }) => {
     // 1. Klik tombol tambah / baru (+ di pojok kanan atas dengan rute create)
     const tambahBtn = page.locator('a[href*="/sales/faktur/create"]').first();
     await tambahBtn.waitFor({ state: 'visible', timeout: 10000 });

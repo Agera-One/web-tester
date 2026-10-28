@@ -11,8 +11,8 @@ export default defineConfig({
   retries: 1,
   workers: 1,
   reporter: [
-    ['json', { outputFile: 'results.json' }],
-    ['html']
+    ['json', { outputFile: process.env.PLAYWRIGHT_JSON_OUTPUT_NAME || 'results.json' }],
+    ['html', { outputFolder: process.env.PLAYWRIGHT_HTML_REPORT || 'playwright-report', open: 'never' }]
   ],
   use: {
     actionTimeout: 15000,

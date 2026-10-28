@@ -40,9 +40,11 @@ Route::middleware(['auth', 'is_active', 'role:admin,developer,qa'])->group(funct
     Route::get('/tests/create', [TestController::class, 'create'])->name('tests.create');
     Route::post('/tests', [TestController::class, 'store'])->name('tests.store');
     Route::post('/tests/sync', [App\Http\Controllers\TestCatalogController::class, 'sync'])->name('tests.sync');
+    Route::post('/tests/{suite}/toggle', [App\Http\Controllers\TestCatalogController::class, 'toggle'])->name('tests.toggle')->middleware('role:admin,developer');
+    Route::post('/tests/cases/{case}/toggle', [App\Http\Controllers\TestCatalogController::class, 'toggleCase'])->name('tests.cases.toggle')->middleware('role:admin,developer');
     Route::get('/tests/edit', [TestController::class, 'edit'])->name('tests.edit');
-Route::put('/tests/update', [TestController::class, 'update'])->name('tests.update');
-Route::delete('/tests/destroy', [TestController::class, 'destroy'])->name('tests.destroy');
+    Route::put('/tests/update', [TestController::class, 'update'])->name('tests.update');
+    Route::delete('/tests/destroy', [TestController::class, 'destroy'])->name('tests.destroy');
 
     // Eksekusi Run Playwright
     Route::get('/runs', [App\Http\Controllers\RunController::class, 'index'])->name('runs.index');
@@ -51,6 +53,11 @@ Route::delete('/tests/destroy', [TestController::class, 'destroy'])->name('tests
     Route::get('/runs/{id}', [App\Http\Controllers\RunController::class, 'show'])->name('runs.show');
     Route::get('/runs/{id}/status', [App\Http\Controllers\RunController::class, 'status'])->name('runs.status');
     Route::post('/runs/{id}/cancel', [App\Http\Controllers\RunController::class, 'cancel'])->name('runs.cancel');
+    Route::get('/runs/{id}/report/{file?}', [App\Http\Controllers\RunController::class, 'report'])->where('file', '.*')->name('runs.report');
+    
+    // Artefak Hasil Pengujian & Tren Case (F6 & F7)
+    Route::get('/results/{id}/artifact/{type}', [App\Http\Controllers\ResultController::class, 'artifact'])->name('results.artifact');
+    Route::get('/cases/{id}/history', [App\Http\Controllers\ResultController::class, 'history'])->name('cases.history');
     
     // Penjadwalan Otomatis (Scheduler)
     Route::resource('schedules', App\Http\Controllers\ScheduleController::class);

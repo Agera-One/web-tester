@@ -4,7 +4,7 @@
       "C:\\Program Files\\nodejs\\node.exe",
       "C:\\laragon\\www\\web-tester\\tests-e2e\\node_modules\\@playwright\\test\\cli.js",
       "test",
-      "specs/penerimaan-barang.spec.ts"
+      "--list"
     ],
     "configFile": "C:\\laragon\\www\\web-tester\\tests-e2e\\playwright.config.ts",
     "rootDir": "C:/laragon/www/web-tester/tests-e2e/specs",
@@ -17,18 +17,14 @@
     "grep": {},
     "grepInvert": null,
     "maxFailures": 0,
-    "metadata": {
-      "actualWorkers": 1
-    },
+    "metadata": {},
     "preserveOutput": "always",
     "projects": [
       {
         "outputDir": "C:/laragon/www/web-tester/tests-e2e/test-results",
         "repeatEach": 1,
         "retries": 1,
-        "metadata": {
-          "actualWorkers": 1
-        },
+        "metadata": {},
         "id": "chromium",
         "name": "chromium",
         "testDir": "C:/laragon/www/web-tester/tests-e2e/specs",
@@ -49,7 +45,10 @@
       ],
       [
         "html",
-        null
+        {
+          "outputFolder": "playwright-report",
+          "open": "never"
+        }
       ]
     ],
     "reportSlowTests": {
@@ -66,6 +65,328 @@
   },
   "suites": [
     {
+      "title": "faktur-penjualan.spec.ts",
+      "file": "faktur-penjualan.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Modul Faktur Penjualan",
+          "file": "faktur-penjualan.spec.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Dapat memuat halaman daftar faktur penjualan dengan benar @sales @smoke",
+              "ok": true,
+              "tags": [
+                "sales",
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "eb5d29dccfa6713e6fae-75b4fd05c80ba18885d3",
+              "file": "faktur-penjualan.spec.ts",
+              "line": 18,
+              "column": 7
+            },
+            {
+              "title": "Dapat membuka form tambah faktur penjualan baru @sales @critical",
+              "ok": true,
+              "tags": [
+                "sales",
+                "critical"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "eb5d29dccfa6713e6fae-75f578178c0668c1e7e0",
+              "file": "faktur-penjualan.spec.ts",
+              "line": 31,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "input-master-barang.spec.ts",
+      "file": "input-master-barang.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Modul Master Barang - Input Data",
+          "file": "input-master-barang.spec.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Dapat memuat halaman master barang dan membuka formulir tambah barang @master @smoke",
+              "ok": true,
+              "tags": [
+                "master",
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "4e1324dedcee1f38e095-91c9889c81dfb882193a",
+              "file": "input-master-barang.spec.ts",
+              "line": 17,
+              "column": 7
+            },
+            {
+              "title": "Berhasil menambah dan menyimpan barang baru @master @critical",
+              "ok": true,
+              "tags": [
+                "master",
+                "critical"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "4e1324dedcee1f38e095-aa384b989e03ccc7b1aa",
+              "file": "input-master-barang.spec.ts",
+              "line": 40,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "jurnal-umum.spec.ts",
+      "file": "jurnal-umum.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Modul Jurnal Umum",
+          "file": "jurnal-umum.spec.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Dapat memuat halaman daftar jurnal umum dengan benar @gl @smoke",
+              "ok": true,
+              "tags": [
+                "gl",
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e686b0143e722083b6eb-d82543351e5cae9eba47",
+              "file": "jurnal-umum.spec.ts",
+              "line": 18,
+              "column": 7
+            },
+            {
+              "title": "Dapat membuka form tambah jurnal umum baru @gl @critical",
+              "ok": true,
+              "tags": [
+                "gl",
+                "critical"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e686b0143e722083b6eb-81f066b46fe0752ccea9",
+              "file": "jurnal-umum.spec.ts",
+              "line": 31,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "login.spec.ts",
+      "file": "login.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "berhasil masuk ke dashboard web-new @smoke",
+          "ok": true,
+          "tags": [
+            "smoke"
+          ],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "41d3fd2474a19feb00a1-02d623c14724a38a1cb9",
+          "file": "login.spec.ts",
+          "line": 4,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "master-barang.spec.ts",
+      "file": "master-barang.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Modul Master Barang",
+          "file": "master-barang.spec.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Dapat memuat halaman daftar barang dengan benar @master @smoke",
+              "ok": true,
+              "tags": [
+                "master",
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a63850111e9ce703407b-99162a5995d9551e6cf2",
+              "file": "master-barang.spec.ts",
+              "line": 18,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "pembayaran.spec.ts",
+      "file": "pembayaran.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Modul Pembayaran",
+          "file": "pembayaran.spec.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Dapat memuat halaman daftar pembayaran dengan benar @finance @smoke",
+              "ok": true,
+              "tags": [
+                "finance",
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d1ef4efb37bc6b190640-b1c0e98d4af36b57043f",
+              "file": "pembayaran.spec.ts",
+              "line": 18,
+              "column": 7
+            },
+            {
+              "title": "Dapat membuka form tambah pembayaran baru @finance @critical",
+              "ok": true,
+              "tags": [
+                "finance",
+                "critical"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d1ef4efb37bc6b190640-fadba7de1160260a74ea",
+              "file": "pembayaran.spec.ts",
+              "line": 31,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
       "title": "penerimaan-barang.spec.ts",
       "file": "penerimaan-barang.spec.ts",
       "column": 0,
@@ -79,9 +400,12 @@
           "column": 6,
           "specs": [
             {
-              "title": "Dapat memuat halaman daftar penerimaan barang dengan benar",
+              "title": "Dapat memuat halaman daftar penerimaan barang dengan benar @purchasing @smoke",
               "ok": true,
-              "tags": [],
+              "tags": [
+                "purchasing",
+                "smoke"
+              ],
               "tests": [
                 {
                   "timeout": 60000,
@@ -89,33 +413,22 @@
                   "expectedStatus": "passed",
                   "projectId": "chromium",
                   "projectName": "chromium",
-                  "results": [
-                    {
-                      "workerIndex": 0,
-                      "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 8171,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2026-10-14T09:06:56.958Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
+                  "results": [],
+                  "status": "skipped"
                 }
               ],
-              "id": "196d91943ca4dd118b56-9d1393920496176056bf",
+              "id": "196d91943ca4dd118b56-d7ec4c2c3e554f85417b",
               "file": "penerimaan-barang.spec.ts",
               "line": 18,
               "column": 7
             },
             {
-              "title": "Dapat membuka form tambah penerimaan barang baru",
+              "title": "Dapat membuka form tambah penerimaan barang baru @purchasing @critical",
               "ok": true,
-              "tags": [],
+              "tags": [
+                "purchasing",
+                "critical"
+              ],
               "tests": [
                 {
                   "timeout": 60000,
@@ -123,28 +436,347 @@
                   "expectedStatus": "passed",
                   "projectId": "chromium",
                   "projectName": "chromium",
-                  "results": [
-                    {
-                      "workerIndex": 0,
-                      "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 10048,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2026-10-14T09:07:05.331Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
+                  "results": [],
+                  "status": "skipped"
                 }
               ],
-              "id": "196d91943ca4dd118b56-601d6bae887c7e08c45a",
+              "id": "196d91943ca4dd118b56-8d4ba32ad7a43e6755fe",
               "file": "penerimaan-barang.spec.ts",
               "line": 31,
               "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "purchase-order.spec.ts",
+      "file": "purchase-order.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Modul Purchase Order",
+          "file": "purchase-order.spec.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Dapat memuat halaman daftar pesanan pembelian dengan benar @purchasing @smoke",
+              "ok": true,
+              "tags": [
+                "purchasing",
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "8e996c1882ca983a3c14-6cabedb7e5f27088280e",
+              "file": "purchase-order.spec.ts",
+              "line": 18,
+              "column": 7
+            },
+            {
+              "title": "Dapat membuka form tambah pesanan pembelian baru @purchasing @critical",
+              "ok": true,
+              "tags": [
+                "purchasing",
+                "critical"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "8e996c1882ca983a3c14-01afaf7abf76ce076907",
+              "file": "purchase-order.spec.ts",
+              "line": 31,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "smoke\\menu.spec.ts",
+      "file": "smoke/menu.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Modul Smoke Test - Navigasi Menu ERP",
+          "file": "smoke/menu.spec.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Membuka menu Dashboard tanpa error @smoke @menu",
+              "ok": true,
+              "tags": [
+                "smoke",
+                "menu"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e1101eb7a8bd004af498-ebbb35f9fbf2caf2ea22",
+              "file": "smoke/menu.spec.ts",
+              "line": 27,
+              "column": 9
+            },
+            {
+              "title": "Membuka menu Sales - Faktur Penjualan tanpa error @smoke @menu",
+              "ok": true,
+              "tags": [
+                "smoke",
+                "menu"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e1101eb7a8bd004af498-52c1a88eddc432f0952c",
+              "file": "smoke/menu.spec.ts",
+              "line": 27,
+              "column": 9
+            },
+            {
+              "title": "Membuka menu Sales - Pesanan Penjualan tanpa error @smoke @menu",
+              "ok": true,
+              "tags": [
+                "smoke",
+                "menu"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e1101eb7a8bd004af498-401391eeea085e6e992a",
+              "file": "smoke/menu.spec.ts",
+              "line": 27,
+              "column": 9
+            },
+            {
+              "title": "Membuka menu Purchasing - Pesanan Pembelian tanpa error @smoke @menu",
+              "ok": true,
+              "tags": [
+                "smoke",
+                "menu"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e1101eb7a8bd004af498-b6d3d8ed20d20592ec2a",
+              "file": "smoke/menu.spec.ts",
+              "line": 27,
+              "column": 9
+            },
+            {
+              "title": "Membuka menu Purchasing - Penerimaan Barang tanpa error @smoke @menu",
+              "ok": true,
+              "tags": [
+                "smoke",
+                "menu"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e1101eb7a8bd004af498-cb750bc9c5c88f9aadeb",
+              "file": "smoke/menu.spec.ts",
+              "line": 27,
+              "column": 9
+            },
+            {
+              "title": "Membuka menu Inventory - Master Item / Barang tanpa error @smoke @menu",
+              "ok": true,
+              "tags": [
+                "smoke",
+                "menu"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e1101eb7a8bd004af498-e3ebb913fc70ec2341d0",
+              "file": "smoke/menu.spec.ts",
+              "line": 27,
+              "column": 9
+            },
+            {
+              "title": "Membuka menu General Ledger - Transaksi Jurnal tanpa error @smoke @menu",
+              "ok": true,
+              "tags": [
+                "smoke",
+                "menu"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e1101eb7a8bd004af498-eb5ceaa44c1f143c14d4",
+              "file": "smoke/menu.spec.ts",
+              "line": 27,
+              "column": 9
+            },
+            {
+              "title": "Membuka menu Finance - Kas Keluar (BKK) tanpa error @smoke @menu",
+              "ok": true,
+              "tags": [
+                "smoke",
+                "menu"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e1101eb7a8bd004af498-311cb7f847bc3f6fb829",
+              "file": "smoke/menu.spec.ts",
+              "line": 27,
+              "column": 9
+            },
+            {
+              "title": "Membuka menu Finance - Kas Masuk (BKM) tanpa error @smoke @menu",
+              "ok": true,
+              "tags": [
+                "smoke",
+                "menu"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e1101eb7a8bd004af498-e7e9d89dbdfaa9fb4e6d",
+              "file": "smoke/menu.spec.ts",
+              "line": 27,
+              "column": 9
+            },
+            {
+              "title": "Membuka menu Master - Pelanggan tanpa error @smoke @menu",
+              "ok": true,
+              "tags": [
+                "smoke",
+                "menu"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e1101eb7a8bd004af498-6c79d9837f2599876dda",
+              "file": "smoke/menu.spec.ts",
+              "line": 27,
+              "column": 9
+            },
+            {
+              "title": "Membuka menu Master - Supplier tanpa error @smoke @menu",
+              "ok": true,
+              "tags": [
+                "smoke",
+                "menu"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e1101eb7a8bd004af498-9184b3ba461b90ee74f1",
+              "file": "smoke/menu.spec.ts",
+              "line": 27,
+              "column": 9
             }
           ]
         }
@@ -153,10 +785,10 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-10-14T09:06:56.506Z",
-    "duration": 20760.639000000003,
-    "expected": 2,
-    "skipped": 0,
+    "startTime": "2026-10-26T04:43:56.940Z",
+    "duration": 1790.7849999999999,
+    "expected": 0,
+    "skipped": 25,
     "unexpected": 0,
     "flaky": 0
   }

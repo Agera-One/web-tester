@@ -15,7 +15,7 @@ test.describe('Modul Purchase Order', () => {
     await page.waitForLoadState('domcontentloaded');
   });
 
-  test('Dapat memuat halaman daftar pesanan pembelian dengan benar', async ({ page }) => {
+  test('Dapat memuat halaman daftar pesanan pembelian dengan benar @purchasing @smoke', async ({ page }) => {
     // Verifikasi judul halaman
     await expect(page).toHaveTitle(/.*Seventhsoft.*/i);
 
@@ -28,7 +28,7 @@ test.describe('Modul Purchase Order', () => {
     await expect(dataTable).toBeVisible({ timeout: 10000 });
   });
 
-  test('Dapat membuka form tambah pesanan pembelian baru', async ({ page }) => {
+  test('Dapat membuka form tambah pesanan pembelian baru @purchasing @critical', async ({ page }) => {
     // 1. Klik tombol tambah / baru (+ di pojok kanan atas dengan rute create)
     const tambahBtn = page.locator('a[href*="/purchasing/order/create"]').first();
     await tambahBtn.waitFor({ state: 'visible', timeout: 10000 });

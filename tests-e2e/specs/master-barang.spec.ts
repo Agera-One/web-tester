@@ -1,20 +1,29 @@
 import { test, expect } from '@playwright/test';
-import { login } from '../utils/helpers';
+import { login, waitForLoading } from '../utils/helpers';
 
 test.describe('Modul Master Barang', () => {
+  const baseUrl = process.env.BASE_URL || 'https://web-new.seventhsoft.id';
+  const masterItemUrl = `${baseUrl}/master/item`;
+
   test.beforeEach(async ({ page }) => {
-    // Login otomatis pakai helper
+    // 1. Login menggunakan helper
     await login(page);
+
+    // 2. Arahkan ke URL menu Master Barang / Item
+    await page.goto(masterItemUrl);
+    await page.waitForLoadState('domcontentloaded');
+    await waitForLoading(page, 5000);
   });
 
-  test('Dapat memuat halaman daftar barang dengan benar @smoke', async ({ page }) => {
-    // 1. Ambil URL target dari environment
-    const baseUrl = process.env.BASE_URL || 'https://web-new.seventhsoft.id';
+  test('Dapat memuat halaman daftar barang dengan benar @master @smoke', async ({ page }) => {
+    // Verifikasi judul halaman
+    await expect(page).toHaveTitle(/.*Seventhsoft.*/i);
 
-    // 2. Lakukan navigasi menggunakan URL yang telah digabung secara utuh
-    await page.goto(`${baseUrl}/master-barang`);
+    // Verifikasi berada pada URL master item
+    await expect(page).toHaveURL(/.*\/master\/item/);
 
-    // 3. Validasi keberhasilan pemuatan rute target
-    await expect(page).toHaveURL(/.*master-barang/);
+    // Verifikasi tabel data barang termuat di halaman
+    const dataTable = page.locator('table:visible, .dataTables_wrapper:visible, #table-item').first();
+    await expect(dataTable).toBeVisible({ timeout: 10000 });
   });
 });

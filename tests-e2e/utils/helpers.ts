@@ -151,3 +151,36 @@ export async function fillSelect2(
     await searchInput.press('Enter');
   }
 }
+
+/**
+ * Menunggu hingga animasi loading, spinner, atau overlay pemrosesan AJAX selesai.
+ * Berguna untuk mengatasi masalah test flaky pada operasi dinamis web-new (PRD Bagian 12).
+ * 
+ * @param page Instance Playwright Page
+ * @param timeout Durasi timeout dalam milidetik (default: 10000ms)
+ */
+export async function waitForLoading(page: Page, timeout: number = 10000): Promise<void> {
+  const loadingSelectors = [
+    '#loading',
+    '.loading',
+    '.overlay:visible',
+    '.blockUI',
+    '.dataTables_processing:visible',
+    '.spinner-border:visible'
+  ];
+
+  for (const selector of loadingSelectors) {
+    const el = page.locator(selector).first();
+    if (await el.isVisible().catch(() => false)) {
+      await el.waitFor({ state: 'hidden', timeout }).catch(() => null);
+    }
+  }
+
+  await page.waitForLoadState('domcontentloaded');
+}
+
+/**
+ * Alias bahasa Indonesia untuk fillSelect2 sesuai terminologi PRD Bagian 12.
+ */
+export const pilihSelect2 = fillSelect2;
+

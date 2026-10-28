@@ -27,6 +27,37 @@ class TestCatalogController extends Controller
     }
 
     /**
+     * Mengaktifkan atau menonaktifkan test suite dan seluruh kasus uji di dalamnya (PRD F3).
+     * URI: POST /tests/{suite}/toggle
+     */
+    public function toggle($suiteId)
+    {
+        $suite = TestSuite::findOrFail($suiteId);
+        $newState = !$suite->is_active;
+
+        $suite->update(['is_active' => $newState]);
+        TestCase::where('test_suite_id', $suite->id)->update(['is_active' => $newState]);
+
+        $statusText = $newState ? 'diaktifkan' : 'dinonaktifkan';
+        return redirect()->back()->with('success', "Test suite '{$suite->title}' beserta skenarionya berhasil {$statusText}.");
+    }
+
+    /**
+     * Mengaktifkan atau menonaktifkan test case tertentu (PRD F3).
+     * URI: POST /tests/cases/{case}/toggle
+     */
+    public function toggleCase($caseId)
+    {
+        $case = TestCase::findOrFail($caseId);
+        $newState = !$case->is_active;
+
+        $case->update(['is_active' => $newState]);
+
+        $statusText = $newState ? 'diaktifkan' : 'dinonaktifkan';
+        return redirect()->back()->with('success', "Kasus uji '{$case->title}' berhasil {$statusText}.");
+    }
+
+    /**
      * Menjalankan proses deteksi Playwright dan memperbarui tabel test_suites & test_cases.
      */
     public function performSync(): array
@@ -77,14 +108,26 @@ class TestCatalogController extends Controller
         foreach ($data['suites'] as $suiteData) {
             $filePath = $suiteData['file'];
             $normalizedPath = str_replace('\\', '/', $filePath);
-            $module = str_contains($normalizedPath, '/') ? explode('/', $normalizedPath)[0] : $normalizedPath;
+            $cleanName = str_replace(['.spec.ts', '.spec.js'], '', basename($normalizedPath));
+            $module = match (true) {
+                str_starts_with($normalizedPath, 'smoke/') || $cleanName === 'menu' => 'Smoke',
+                str_starts_with($normalizedPath, 'sales/') || str_contains($cleanName, 'faktur') || str_contains($cleanName, 'penjualan') => 'Sales',
+                str_starts_with($normalizedPath, 'purchasing/') || str_contains($cleanName, 'purchase') || str_contains($cleanName, 'penerimaan') => 'Purchasing',
+                str_starts_with($normalizedPath, 'gl/') || str_contains($cleanName, 'jurnal') => 'GL',
+                str_starts_with($normalizedPath, 'finance/') || str_contains($cleanName, 'bayar') || str_contains($cleanName, 'bkm') => 'Finance',
+                str_starts_with($normalizedPath, 'inventory/') || str_contains($cleanName, 'opname') || str_contains($cleanName, 'stok') => 'Inventory',
+                str_starts_with($normalizedPath, 'master/') || str_contains($cleanName, 'master') || str_contains($cleanName, 'barang') => 'Master',
+                str_starts_with($normalizedPath, 'fasilitas/') || str_contains($cleanName, 'fasilitas') => 'Fasilitas',
+                default => ucfirst(str_contains($normalizedPath, '/') ? explode('/', $normalizedPath)[0] : $cleanName),
+            };
             
+            $existingSuite = TestSuite::where('file_path', $filePath)->first();
             $suite = TestSuite::updateOrCreate(
                 ['file_path' => $filePath],
                 [
                     'module' => $module,
                     'title' => $suiteData['title'] ?: basename($filePath),
-                    'is_active' => true
+                    'is_active' => $existingSuite ? $existingSuite->is_active : true
                 ]
             );
             

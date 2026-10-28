@@ -23,14 +23,23 @@ class PlaywrightRunner
         }
         $password = Crypt::decryptString($env->password);
 
-        $logPath = storage_path("app/runs/{$run->id}/log.txt");
-        $resultsPath = storage_path("app/runs/{$run->id}/results.json");
+        $logDir = storage_path("app/runs/{$run->id}");
+        $logPath = $logDir . '/log.txt';
+        $resultsPath = $logDir . '/results.json';
+        $reportDir = $logDir . '/report';
+        $artifactsDir = $logDir . '/artifacts';
         
-        if (!File::exists(dirname($logPath))) {
-            File::makeDirectory(dirname($logPath), 0755, true, true);
+        if (!File::exists($logDir)) {
+            File::makeDirectory($logDir, 0755, true, true);
+        }
+        if (!File::exists($artifactsDir)) {
+            File::makeDirectory($artifactsDir, 0755, true, true);
         }
         
-        $run->update(['log_path' => $logPath, 'report_path' => $resultsPath]);
+        $run->update([
+            'log_path' => $logPath, 
+            'report_path' => "runs/{$run->id}/report/index.html"
+        ]);
 
         $cliJs = base_path('tests-e2e/node_modules/@playwright/test/cli.js');
         if (file_exists($cliJs)) {
@@ -46,15 +55,36 @@ class PlaywrightRunner
         }
         
         $scope = $run->scope;
-        if (isset($scope['type']) && $scope['type'] === 'suite') {
-            $suiteId = $scope['id'] ?? ($scope['ids'][0] ?? null);
-            $suite = \App\Models\TestSuite::find($suiteId);
-            if ($suite) {
-                $cmd[] = $suite->file_path;
+        if (isset($scope['type'])) {
+            if ($scope['type'] === 'all') {
+                $activeSuiteFiles = \App\Models\TestSuite::where('is_active', true)->pluck('file_path')->toArray();
+                if (!empty($activeSuiteFiles)) {
+                    foreach ($activeSuiteFiles as $file) {
+                        $cmd[] = $file;
+                    }
+                }
+            } elseif ($scope['type'] === 'suite') {
+                $suiteId = $scope['id'] ?? ($scope['ids'][0] ?? null);
+                $suite = \App\Models\TestSuite::find($suiteId);
+                if ($suite) {
+                    $cmd[] = $suite->file_path;
+                }
+            } elseif ($scope['type'] === 'tag' && !empty($scope['value'])) {
+                $cmd[] = '--grep=' . $scope['value'];
+            } elseif ($scope['type'] === 'case') {
+                $caseId = $scope['id'] ?? ($scope['ids'][0] ?? null);
+                $testCase = \App\Models\TestCase::find($caseId);
+                if ($testCase) {
+                    if ($testCase->testSuite) {
+                        $cmd[] = $testCase->testSuite->file_path;
+                    }
+                    $cmd[] = '--grep=' . $testCase->title;
+                }
             }
         }
         
-        $cmd[] = '--reporter=line,json';
+        $cmd[] = '--reporter=line,json,html';
+        $cmd[] = '--output=' . $artifactsDir;
 
         $process = new Process($cmd);
         $process->setWorkingDirectory(base_path('tests-e2e'));
@@ -65,13 +95,21 @@ class PlaywrightRunner
         $processEnv['TEST_USER'] = $env->username;
         $processEnv['TEST_PASS'] = $password;
         $processEnv['PLAYWRIGHT_JSON_OUTPUT_NAME'] = $resultsPath;
+        $processEnv['PLAYWRIGHT_HTML_REPORT'] = $reportDir;
 
         $process->setEnv($processEnv);
 
-        $process->run(function ($type, $buffer) use ($logPath) {
+        $process->start(function ($type, $buffer) use ($logPath) {
             file_put_contents($logPath, $buffer, FILE_APPEND);
         });
-        
-        // Cek hasil atau biarkan Job/ResultParser yang update akhir
+
+        $pid = $process->getPid();
+        if ($pid) {
+            $run->update(['pid' => $pid]);
+        }
+
+        $process->wait(function ($type, $buffer) use ($logPath) {
+            file_put_contents($logPath, $buffer, FILE_APPEND);
+        });
     }
 }

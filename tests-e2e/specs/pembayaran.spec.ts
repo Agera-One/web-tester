@@ -15,7 +15,7 @@ test.describe('Modul Pembayaran', () => {
     await page.waitForLoadState('domcontentloaded');
   });
 
-  test('Dapat memuat halaman daftar pembayaran dengan benar', async ({ page }) => {
+  test('Dapat memuat halaman daftar pembayaran dengan benar @finance @smoke', async ({ page }) => {
     // Verifikasi judul halaman
     await expect(page).toHaveTitle(/.*Seventhsoft.*/i);
 
@@ -28,7 +28,7 @@ test.describe('Modul Pembayaran', () => {
     await expect(dataTable).toBeVisible({ timeout: 10000 });
   });
 
-  test('Dapat membuka form tambah pembayaran baru', async ({ page }) => {
+  test('Dapat membuka form tambah pembayaran baru @finance @critical', async ({ page }) => {
     // 1. Klik tombol tambah / baru (+ di pojok kanan atas dengan rute create)
     const tambahBtn = page.locator('a[href*="/finance/bkk/create"]').first();
     await tambahBtn.waitFor({ state: 'visible', timeout: 10000 });

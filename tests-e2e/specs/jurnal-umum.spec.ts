@@ -15,7 +15,7 @@ test.describe('Modul Jurnal Umum', () => {
     await page.waitForLoadState('domcontentloaded');
   });
 
-  test('Dapat memuat halaman daftar jurnal umum dengan benar', async ({ page }) => {
+  test('Dapat memuat halaman daftar jurnal umum dengan benar @gl @smoke', async ({ page }) => {
     // Verifikasi judul halaman
     await expect(page).toHaveTitle(/.*Seventhsoft.*/i);
 
@@ -28,7 +28,7 @@ test.describe('Modul Jurnal Umum', () => {
     await expect(dataTable).toBeVisible({ timeout: 10000 });
   });
 
-  test('Dapat membuka form tambah jurnal umum baru', async ({ page }) => {
+  test('Dapat membuka form tambah jurnal umum baru @gl @critical', async ({ page }) => {
     // 1. Klik tombol tambah / baru (+ di pojok kanan atas dengan rute create)
     const tambahBtn = page.locator('a[href*="/gl/jurnal/create"]').first();
     await tambahBtn.waitFor({ state: 'visible', timeout: 10000 });
