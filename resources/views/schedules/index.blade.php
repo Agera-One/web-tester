@@ -8,7 +8,7 @@
             </div>
             <div>
                 <h2 class="text-xl font-bold leading-tight text-slate-800 dark:text-slate-100">
-                    {{ __('Penjadwalan Otomatis (Scheduler)') }}
+                    {{ __('JADWAL') }}
                 </h2>
                 <p class="text-xs text-slate-500 dark:text-slate-400">Kelola jadwal eksekusi berkala untuk pengujian Playwright end-to-end</p>
             </div>

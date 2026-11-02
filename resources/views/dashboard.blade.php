@@ -23,7 +23,7 @@
         <div class="flex items-center justify-between">
             <div>
                 <h2 class="font-bold text-2xl tracking-tight text-slate-800 dark:text-slate-100">
-                    Overview
+                    DASHBOARD
                 </h2>
                 <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Pemantauan otomatis & metrik eksekusi Playwright</p>
             </div>

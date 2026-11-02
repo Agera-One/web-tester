@@ -5,7 +5,7 @@
             <!-- Header Section -->
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-2xl font-semibold text-slate-800 dark:text-slate-200">
-                    Manajemen Pengguna
+                    PENGGUNA
                 </h2>
                 <a href="{{ route('users.create') }}" class="px-4 py-2 bg-gradient-to-r from-[#112C71] to-[#5B58EB] text-white rounded-lg shadow-md hover:opacity-90 transition-opacity">
                     + Tambah Pengguna
