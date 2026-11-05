@@ -407,6 +407,7 @@ test.describe('Modul Pembelian - Siklus Penuh Transaksi Riil', () => {
       // Cek apakah tombol Hapus (#btn-delete) bisa diklik atau dikunci/ditolak
       let statusHasil = '';
       let keteranganLengkap = '';
+      let berhasilDihapus = false;
 
       const btnHapus = page.locator('#btn-delete, .btnMenuHapus, button[title="Delete"], button[title="Hapus"]').first();
       const isVisible = await btnHapus.isVisible().catch(() => false);
@@ -430,13 +431,16 @@ test.describe('Modul Pembelian - Siklus Penuh Transaksi Riil', () => {
           const pesan = (await swalMessage.innerText().catch(() => '')).trim();
           statusHasil = `DITOLAK SISTEM (Status PO: ${poStatusText})`;
           keteranganLengkap = `Tombol hapus dapat diklik namun sistem menolak penghapusan PO ${generatedPoNo}. Pesan sistem: "${pesan}"`;
+          berhasilDihapus = false;
         } else {
-          statusHasil = `DIIZINKAN SISTEM / TERHAPUS (Status PO: ${poStatusText})`;
-          keteranganLengkap = `Transaksi Order Pembelian ${generatedPoNo} berhasil dihapus meskipun barang telah diproses.`;
+          statusHasil = `BUG / CELAH SISTEM - TRANSAKSI TERHAPUS (Status PO: ${poStatusText})`;
+          keteranganLengkap = `Transaksi Order Pembelian ${generatedPoNo} berhasil dihapus meskipun barang telah diterima (COMPLETE) dan terjual.`;
+          berhasilDihapus = true;
         }
       } else {
         statusHasil = `DILINDUNGI SISTEM - TOMBOL HAPUS DIKUNCI (Status PO: ${poStatusText})`;
         keteranganLengkap = `Pada detail Order Pembelian ${generatedPoNo} (Status: ${poStatusText}), tombol Hapus (#btn-delete) berstatus disabled/dikunci sehingga tidak dapat dihapus.`;
+        berhasilDihapus = false;
       }
 
       // Catat ke dalam laporan Playwright
@@ -452,6 +456,9 @@ test.describe('Modul Pembelian - Siklus Penuh Transaksi Riil', () => {
       console.log(`Status Hasil : ${statusHasil}`);
       console.log(`Keterangan   : ${keteranganLengkap}`);
       console.log('=================================================================');
+
+      // Validasi akhir: Transaksi PO yang sudah COMPLETE & terjual TIDAK BOLEH berhasil dihapus (PASSED jika false, FAILED jika true)
+      expect(berhasilDihapus, keteranganLengkap).toBe(false);
     });
   });
 });
