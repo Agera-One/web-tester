@@ -169,7 +169,7 @@
                                 <th scope="col" class="px-4 py-3.5 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">Status</th>
                                 <th scope="col" class="px-4 py-3.5 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">Durasi</th>
                                 <th scope="col" class="px-5 py-3.5 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">Detail Kesalahan (Error)</th>
-                                <th scope="col" class="px-5 py-3.5 text-center text-xs font-bold text-slate-500 uppercase tracking-wider">Artefak Kegagalan</th>
+                                <th scope="col" class="px-5 py-3.5 text-center text-xs font-bold text-slate-500 uppercase tracking-wider">Artefak (Foto / Video)</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-100 dark:divide-slate-800" id="results-tbody">
@@ -247,7 +247,7 @@
                                                     <!-- Screenshot -->
                                                     @if($result->screenshot_path)
                                                         @php $screenshotUrl = route('results.artifact', ['id' => $result->id, 'type' => 'screenshot']); @endphp
-                                                        <button type="button" @click="openPreview('image', '{{ $screenshotUrl }}', 'Tangkapan Layar: {{ addslashes($result->title) }}')" class="inline-flex items-center px-2 py-1 bg-amber-500 hover:bg-amber-600 text-white rounded-lg text-xs font-semibold shadow-sm transition-all" title="Buka Tangkapan Layar Kegagalan">
+                                                        <button type="button" @click="openPreview('image', '{{ $screenshotUrl }}', 'Tangkapan Layar: {{ addslashes($result->title) }}')" class="inline-flex items-center px-2 py-1 bg-amber-500 hover:bg-amber-600 text-white rounded-lg text-xs font-semibold shadow-sm transition-all" title="Buka Tangkapan Layar Pengujian">
                                                             <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                                                             Foto
                                                         </button>

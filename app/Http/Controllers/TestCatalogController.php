@@ -136,24 +136,34 @@ class TestCatalogController extends Controller
             $specs = $this->extractSpecs($suiteData);
 
             foreach ($specs as $spec) {
-                $testCase = TestCase::updateOrCreate(
-                    [
-                        'test_suite_id' => $suite->id,
-                        'title' => $spec['title'],
-                        'line' => $spec['line']
-                    ],
-                    [
+                $existingCase = TestCase::where('test_suite_id', $suite->id)
+                    ->where('title', $spec['title'])
+                    ->first();
+
+                if ($existingCase) {
+                    $existingCase->update([
+                        'line' => $spec['line'],
                         'full_title' => ($suiteData['title'] ?: basename($filePath)) . ' > ' . $spec['title'],
                         'tags' => $spec['tags'] ?? [],
-                        'is_active' => true
-                    ]
-                );
+                    ]);
+                    $testCase = $existingCase;
+                } else {
+                    $testCase = TestCase::create([
+                        'test_suite_id' => $suite->id,
+                        'title' => $spec['title'],
+                        'line' => $spec['line'],
+                        'full_title' => ($suiteData['title'] ?: basename($filePath)) . ' > ' . $spec['title'],
+                        'tags' => $spec['tags'] ?? [],
+                        'is_active' => true,
+                    ]);
+                }
                 $activeCaseIds[] = $testCase->id;
             }
         }
 
-        TestSuite::whereNotIn('id', $activeSuiteIds)->update(['is_active' => false]);
-        TestCase::whereNotIn('id', $activeCaseIds)->update(['is_active' => false]);
+        // Hapus suite dan test case usang yang sudah tidak ada di file .spec.ts karena pembaruan kode
+        TestCase::whereNotIn('id', $activeCaseIds)->delete();
+        TestSuite::whereNotIn('id', $activeSuiteIds)->delete();
 
         return ['success' => true];
     }

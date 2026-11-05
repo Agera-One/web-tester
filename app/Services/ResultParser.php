@@ -179,11 +179,11 @@ class ResultParser
                                     }
                                 }
 
-                                if (($attName === 'screenshot' || str_contains($attType, 'image') || str_ends_with($normalizedPath, '.png')) && !$screenshotPath) {
+                                if ($attName === 'screenshot' || str_contains($attType, 'image') || str_ends_with($normalizedPath, '.png')) {
                                     $screenshotPath = $relPath;
-                                } elseif (($attName === 'video' || str_contains($attType, 'video') || str_ends_with($normalizedPath, '.webm')) && !$videoPath) {
+                                } elseif ($attName === 'video' || str_contains($attType, 'video') || str_ends_with($normalizedPath, '.webm')) {
                                     $videoPath = $relPath;
-                                } elseif (($attName === 'trace' || str_contains($attType, 'zip') || str_ends_with($normalizedPath, '.zip')) && !$tracePath) {
+                                } elseif ($attName === 'trace' || str_contains($attType, 'zip') || str_ends_with($normalizedPath, '.zip')) {
                                     $tracePath = $relPath;
                                 }
                             }

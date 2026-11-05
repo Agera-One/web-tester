@@ -4,7 +4,7 @@
       "C:\\Program Files\\nodejs\\node.exe",
       "C:\\laragon\\www\\web-tester\\tests-e2e\\node_modules\\@playwright\\test\\cli.js",
       "test",
-      "--list"
+      "specs/pembelian-stok-invoice-jual-delete.spec.ts"
     ],
     "configFile": "C:\\laragon\\www\\web-tester\\tests-e2e\\playwright.config.ts",
     "rootDir": "C:/laragon/www/web-tester/tests-e2e/specs",
@@ -17,14 +17,18 @@
     "grep": {},
     "grepInvert": null,
     "maxFailures": 0,
-    "metadata": {},
+    "metadata": {
+      "actualWorkers": 1
+    },
     "preserveOutput": "always",
     "projects": [
       {
         "outputDir": "C:/laragon/www/web-tester/tests-e2e/test-results",
         "repeatEach": 1,
         "retries": 1,
-        "metadata": {},
+        "metadata": {
+          "actualWorkers": 1
+        },
         "id": "chromium",
         "name": "chromium",
         "testDir": "C:/laragon/www/web-tester/tests-e2e/specs",
@@ -65,346 +69,24 @@
   },
   "suites": [
     {
-      "title": "faktur-penjualan.spec.ts",
-      "file": "faktur-penjualan.spec.ts",
+      "title": "pembelian-stok-invoice-jual-delete.spec.ts",
+      "file": "pembelian-stok-invoice-jual-delete.spec.ts",
       "column": 0,
       "line": 0,
       "specs": [],
       "suites": [
         {
-          "title": "Modul Faktur Penjualan",
-          "file": "faktur-penjualan.spec.ts",
+          "title": "Modul Pembelian - Siklus Penuh Transaksi Riil",
+          "file": "pembelian-stok-invoice-jual-delete.spec.ts",
           "line": 4,
           "column": 6,
           "specs": [
             {
-              "title": "Dapat memuat halaman daftar faktur penjualan dengan benar @sales @smoke",
-              "ok": true,
-              "tags": [
-                "sales",
-                "smoke"
-              ],
-              "tests": [
-                {
-                  "timeout": 60000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [],
-                  "status": "skipped"
-                }
-              ],
-              "id": "eb5d29dccfa6713e6fae-75b4fd05c80ba18885d3",
-              "file": "faktur-penjualan.spec.ts",
-              "line": 18,
-              "column": 7
-            },
-            {
-              "title": "Dapat membuka form tambah faktur penjualan baru @sales @critical",
-              "ok": true,
-              "tags": [
-                "sales",
-                "critical"
-              ],
-              "tests": [
-                {
-                  "timeout": 60000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [],
-                  "status": "skipped"
-                }
-              ],
-              "id": "eb5d29dccfa6713e6fae-75f578178c0668c1e7e0",
-              "file": "faktur-penjualan.spec.ts",
-              "line": 31,
-              "column": 7
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "title": "input-master-barang.spec.ts",
-      "file": "input-master-barang.spec.ts",
-      "column": 0,
-      "line": 0,
-      "specs": [],
-      "suites": [
-        {
-          "title": "Modul Master Barang - Input Data",
-          "file": "input-master-barang.spec.ts",
-          "line": 4,
-          "column": 6,
-          "specs": [
-            {
-              "title": "Dapat memuat halaman master barang dan membuka formulir tambah barang @master @smoke",
-              "ok": true,
-              "tags": [
-                "master",
-                "smoke"
-              ],
-              "tests": [
-                {
-                  "timeout": 60000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [],
-                  "status": "skipped"
-                }
-              ],
-              "id": "4e1324dedcee1f38e095-91c9889c81dfb882193a",
-              "file": "input-master-barang.spec.ts",
-              "line": 17,
-              "column": 7
-            },
-            {
-              "title": "Berhasil menambah dan menyimpan barang baru @master @critical",
-              "ok": true,
-              "tags": [
-                "master",
-                "critical"
-              ],
-              "tests": [
-                {
-                  "timeout": 60000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [],
-                  "status": "skipped"
-                }
-              ],
-              "id": "4e1324dedcee1f38e095-aa384b989e03ccc7b1aa",
-              "file": "input-master-barang.spec.ts",
-              "line": 40,
-              "column": 7
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "title": "jurnal-umum.spec.ts",
-      "file": "jurnal-umum.spec.ts",
-      "column": 0,
-      "line": 0,
-      "specs": [],
-      "suites": [
-        {
-          "title": "Modul Jurnal Umum",
-          "file": "jurnal-umum.spec.ts",
-          "line": 4,
-          "column": 6,
-          "specs": [
-            {
-              "title": "Dapat memuat halaman daftar jurnal umum dengan benar @gl @smoke",
-              "ok": true,
-              "tags": [
-                "gl",
-                "smoke"
-              ],
-              "tests": [
-                {
-                  "timeout": 60000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [],
-                  "status": "skipped"
-                }
-              ],
-              "id": "e686b0143e722083b6eb-d82543351e5cae9eba47",
-              "file": "jurnal-umum.spec.ts",
-              "line": 18,
-              "column": 7
-            },
-            {
-              "title": "Dapat membuka form tambah jurnal umum baru @gl @critical",
-              "ok": true,
-              "tags": [
-                "gl",
-                "critical"
-              ],
-              "tests": [
-                {
-                  "timeout": 60000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [],
-                  "status": "skipped"
-                }
-              ],
-              "id": "e686b0143e722083b6eb-81f066b46fe0752ccea9",
-              "file": "jurnal-umum.spec.ts",
-              "line": 31,
-              "column": 7
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "title": "login.spec.ts",
-      "file": "login.spec.ts",
-      "column": 0,
-      "line": 0,
-      "specs": [
-        {
-          "title": "berhasil masuk ke dashboard web-new @smoke",
-          "ok": true,
-          "tags": [
-            "smoke"
-          ],
-          "tests": [
-            {
-              "timeout": 60000,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "chromium",
-              "projectName": "chromium",
-              "results": [],
-              "status": "skipped"
-            }
-          ],
-          "id": "41d3fd2474a19feb00a1-02d623c14724a38a1cb9",
-          "file": "login.spec.ts",
-          "line": 4,
-          "column": 5
-        }
-      ]
-    },
-    {
-      "title": "master-barang.spec.ts",
-      "file": "master-barang.spec.ts",
-      "column": 0,
-      "line": 0,
-      "specs": [],
-      "suites": [
-        {
-          "title": "Modul Master Barang",
-          "file": "master-barang.spec.ts",
-          "line": 4,
-          "column": 6,
-          "specs": [
-            {
-              "title": "Dapat memuat halaman daftar barang dengan benar @master @smoke",
-              "ok": true,
-              "tags": [
-                "master",
-                "smoke"
-              ],
-              "tests": [
-                {
-                  "timeout": 60000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [],
-                  "status": "skipped"
-                }
-              ],
-              "id": "a63850111e9ce703407b-99162a5995d9551e6cf2",
-              "file": "master-barang.spec.ts",
-              "line": 18,
-              "column": 7
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "title": "pembayaran.spec.ts",
-      "file": "pembayaran.spec.ts",
-      "column": 0,
-      "line": 0,
-      "specs": [],
-      "suites": [
-        {
-          "title": "Modul Pembayaran",
-          "file": "pembayaran.spec.ts",
-          "line": 4,
-          "column": 6,
-          "specs": [
-            {
-              "title": "Dapat memuat halaman daftar pembayaran dengan benar @finance @smoke",
-              "ok": true,
-              "tags": [
-                "finance",
-                "smoke"
-              ],
-              "tests": [
-                {
-                  "timeout": 60000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [],
-                  "status": "skipped"
-                }
-              ],
-              "id": "d1ef4efb37bc6b190640-b1c0e98d4af36b57043f",
-              "file": "pembayaran.spec.ts",
-              "line": 18,
-              "column": 7
-            },
-            {
-              "title": "Dapat membuka form tambah pembayaran baru @finance @critical",
-              "ok": true,
-              "tags": [
-                "finance",
-                "critical"
-              ],
-              "tests": [
-                {
-                  "timeout": 60000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [],
-                  "status": "skipped"
-                }
-              ],
-              "id": "d1ef4efb37bc6b190640-fadba7de1160260a74ea",
-              "file": "pembayaran.spec.ts",
-              "line": 31,
-              "column": 7
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "title": "penerimaan-barang.spec.ts",
-      "file": "penerimaan-barang.spec.ts",
-      "column": 0,
-      "line": 0,
-      "specs": [],
-      "suites": [
-        {
-          "title": "Modul Penerimaan Barang",
-          "file": "penerimaan-barang.spec.ts",
-          "line": 4,
-          "column": 6,
-          "specs": [
-            {
-              "title": "Dapat memuat halaman daftar penerimaan barang dengan benar @purchasing @smoke",
-              "ok": true,
+              "title": "Siklus penuh Pembelian, Stok, Utang, Penjualan, dan Pengujian Hapus Transaksi @purchasing @flow",
+              "ok": false,
               "tags": [
                 "purchasing",
-                "smoke"
+                "flow"
               ],
               "tests": [
                 {
@@ -413,370 +95,163 @@
                   "expectedStatus": "passed",
                   "projectId": "chromium",
                   "projectName": "chromium",
-                  "results": [],
-                  "status": "skipped"
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 29461,
+                      "error": {
+                        "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#btn-save, button[title=\"Save\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <button title=\"Save\" type=\"button\" id=\"btn-save\" class=\"btn menu-input-nav btn-sm btn-rounded btn-primary btnMenuEdit \">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <input type=\"text\" data-row=\"STOK\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" placeholder=\"Cari..\" class=\"form-control-sm modal_item_datatable form-control input_search_head text\"/> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <input type=\"text\" data-row=\"STOK\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" placeholder=\"Cari..\" class=\"form-control-sm modal_item_datatable form-control input_search_head text\"/> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is not stable\u001b[22m\n\u001b[2m  6 × retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"modal-header\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <input type=\"text\" data-row=\"STOK\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" placeholder=\"Cari..\" class=\"form-control-sm modal_item_datatable form-control input_search_head text\"/> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <input type=\"text\" data-row=\"STOK\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" placeholder=\"Cari..\" class=\"form-control-sm modal_item_datatable form-control input_search_head text\"/> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"modal-header\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <div class=\"modal-header\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <input type=\"text\" data-row=\"STOK\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" placeholder=\"Cari..\" class=\"form-control-sm modal_item_datatable form-control input_search_head text\"/> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n",
+                        "stack": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#btn-save, button[title=\"Save\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <button title=\"Save\" type=\"button\" id=\"btn-save\" class=\"btn menu-input-nav btn-sm btn-rounded btn-primary btnMenuEdit \">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <input type=\"text\" data-row=\"STOK\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" placeholder=\"Cari..\" class=\"form-control-sm modal_item_datatable form-control input_search_head text\"/> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <input type=\"text\" data-row=\"STOK\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" placeholder=\"Cari..\" class=\"form-control-sm modal_item_datatable form-control input_search_head text\"/> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is not stable\u001b[22m\n\u001b[2m  6 × retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"modal-header\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <input type=\"text\" data-row=\"STOK\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" placeholder=\"Cari..\" class=\"form-control-sm modal_item_datatable form-control input_search_head text\"/> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <input type=\"text\" data-row=\"STOK\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" placeholder=\"Cari..\" class=\"form-control-sm modal_item_datatable form-control input_search_head text\"/> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"modal-header\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <div class=\"modal-header\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <input type=\"text\" data-row=\"STOK\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" placeholder=\"Cari..\" class=\"form-control-sm modal_item_datatable form-control input_search_head text\"/> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\n    at C:\\laragon\\www\\web-tester\\tests-e2e\\specs\\pembelian-stok-invoice-jual-delete.spec.ts:72:21\n    at C:\\laragon\\www\\web-tester\\tests-e2e\\specs\\pembelian-stok-invoice-jual-delete.spec.ts:21:5",
+                        "location": {
+                          "file": "C:\\laragon\\www\\web-tester\\tests-e2e\\specs\\pembelian-stok-invoice-jual-delete.spec.ts",
+                          "column": 21,
+                          "line": 72
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 70 |\u001b[39m       \u001b[90m// D. Simpan Transaksi PO ke Database\u001b[39m\n \u001b[90m 71 |\u001b[39m       \u001b[36mconst\u001b[39m saveBtn \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'#btn-save, button[title=\"Save\"]'\u001b[39m)\u001b[33m.\u001b[39mfirst()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 72 |\u001b[39m       \u001b[36mawait\u001b[39m saveBtn\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 73 |\u001b[39m\n \u001b[90m 74 |\u001b[39m       \u001b[90m// Tangani pop-up konfirmasi SweetAlert jika ada\u001b[39m\n \u001b[90m 75 |\u001b[39m       \u001b[36mconst\u001b[39m confirmSwal \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'.swal2-confirm'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\laragon\\www\\web-tester\\tests-e2e\\specs\\pembelian-stok-invoice-jual-delete.spec.ts",
+                            "column": 21,
+                            "line": 72
+                          },
+                          "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#btn-save, button[title=\"Save\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <button title=\"Save\" type=\"button\" id=\"btn-save\" class=\"btn menu-input-nav btn-sm btn-rounded btn-primary btnMenuEdit \">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <input type=\"text\" data-row=\"STOK\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" placeholder=\"Cari..\" class=\"form-control-sm modal_item_datatable form-control input_search_head text\"/> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <input type=\"text\" data-row=\"STOK\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" placeholder=\"Cari..\" class=\"form-control-sm modal_item_datatable form-control input_search_head text\"/> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is not stable\u001b[22m\n\u001b[2m  6 × retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"modal-header\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <input type=\"text\" data-row=\"STOK\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" placeholder=\"Cari..\" class=\"form-control-sm modal_item_datatable form-control input_search_head text\"/> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <input type=\"text\" data-row=\"STOK\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" placeholder=\"Cari..\" class=\"form-control-sm modal_item_datatable form-control input_search_head text\"/> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"modal-header\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <div class=\"modal-header\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <input type=\"text\" data-row=\"STOK\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" placeholder=\"Cari..\" class=\"form-control-sm modal_item_datatable form-control input_search_head text\"/> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\n\n  70 |       // D. Simpan Transaksi PO ke Database\n  71 |       const saveBtn = page.locator('#btn-save, button[title=\"Save\"]').first();\n> 72 |       await saveBtn.click();\n     |                     ^\n  73 |\n  74 |       // Tangani pop-up konfirmasi SweetAlert jika ada\n  75 |       const confirmSwal = page.locator('.swal2-confirm');\n    at C:\\laragon\\www\\web-tester\\tests-e2e\\specs\\pembelian-stok-invoice-jual-delete.spec.ts:72:21\n    at C:\\laragon\\www\\web-tester\\tests-e2e\\specs\\pembelian-stok-invoice-jual-delete.spec.ts:21:5"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "1. Buat dan Simpan Purchase Order (PO)",
+                          "duration": 21239,
+                          "error": {
+                            "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#btn-save, button[title=\"Save\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <button title=\"Save\" type=\"button\" id=\"btn-save\" class=\"btn menu-input-nav btn-sm btn-rounded btn-primary btnMenuEdit \">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <input type=\"text\" data-row=\"STOK\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" placeholder=\"Cari..\" class=\"form-control-sm modal_item_datatable form-control input_search_head text\"/> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <input type=\"text\" data-row=\"STOK\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" placeholder=\"Cari..\" class=\"form-control-sm modal_item_datatable form-control input_search_head text\"/> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is not stable\u001b[22m\n\u001b[2m  6 × retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"modal-header\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <input type=\"text\" data-row=\"STOK\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" placeholder=\"Cari..\" class=\"form-control-sm modal_item_datatable form-control input_search_head text\"/> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <input type=\"text\" data-row=\"STOK\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" placeholder=\"Cari..\" class=\"form-control-sm modal_item_datatable form-control input_search_head text\"/> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"modal-header\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <div class=\"modal-header\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <input type=\"text\" data-row=\"STOK\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" placeholder=\"Cari..\" class=\"form-control-sm modal_item_datatable form-control input_search_head text\"/> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n",
+                            "stack": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#btn-save, button[title=\"Save\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <button title=\"Save\" type=\"button\" id=\"btn-save\" class=\"btn menu-input-nav btn-sm btn-rounded btn-primary btnMenuEdit \">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <input type=\"text\" data-row=\"STOK\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" placeholder=\"Cari..\" class=\"form-control-sm modal_item_datatable form-control input_search_head text\"/> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <input type=\"text\" data-row=\"STOK\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" placeholder=\"Cari..\" class=\"form-control-sm modal_item_datatable form-control input_search_head text\"/> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is not stable\u001b[22m\n\u001b[2m  6 × retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"modal-header\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <input type=\"text\" data-row=\"STOK\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" placeholder=\"Cari..\" class=\"form-control-sm modal_item_datatable form-control input_search_head text\"/> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <input type=\"text\" data-row=\"STOK\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" placeholder=\"Cari..\" class=\"form-control-sm modal_item_datatable form-control input_search_head text\"/> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"modal-header\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <div class=\"modal-header\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <input type=\"text\" data-row=\"STOK\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" placeholder=\"Cari..\" class=\"form-control-sm modal_item_datatable form-control input_search_head text\"/> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\n    at C:\\laragon\\www\\web-tester\\tests-e2e\\specs\\pembelian-stok-invoice-jual-delete.spec.ts:72:21\n    at C:\\laragon\\www\\web-tester\\tests-e2e\\specs\\pembelian-stok-invoice-jual-delete.spec.ts:21:5",
+                            "location": {
+                              "file": "C:\\laragon\\www\\web-tester\\tests-e2e\\specs\\pembelian-stok-invoice-jual-delete.spec.ts",
+                              "column": 21,
+                              "line": 72
+                            },
+                            "snippet": "\u001b[0m \u001b[90m 70 |\u001b[39m       \u001b[90m// D. Simpan Transaksi PO ke Database\u001b[39m\n \u001b[90m 71 |\u001b[39m       \u001b[36mconst\u001b[39m saveBtn \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'#btn-save, button[title=\"Save\"]'\u001b[39m)\u001b[33m.\u001b[39mfirst()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 72 |\u001b[39m       \u001b[36mawait\u001b[39m saveBtn\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 73 |\u001b[39m\n \u001b[90m 74 |\u001b[39m       \u001b[90m// Tangani pop-up konfirmasi SweetAlert jika ada\u001b[39m\n \u001b[90m 75 |\u001b[39m       \u001b[36mconst\u001b[39m confirmSwal \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'.swal2-confirm'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m"
+                          }
+                        }
+                      ],
+                      "startTime": "2026-11-02T10:01:31.951Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\laragon\\www\\web-tester\\tests-e2e\\test-results\\pembelian-stok-invoice-jua-2e328-s-Transaksi-purchasing-flow-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\laragon\\www\\web-tester\\tests-e2e\\test-results\\pembelian-stok-invoice-jua-2e328-s-Transaksi-purchasing-flow-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\laragon\\www\\web-tester\\tests-e2e\\test-results\\pembelian-stok-invoice-jua-2e328-s-Transaksi-purchasing-flow-chromium\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "C:\\laragon\\www\\web-tester\\tests-e2e\\test-results\\pembelian-stok-invoice-jua-2e328-s-Transaksi-purchasing-flow-chromium\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\laragon\\www\\web-tester\\tests-e2e\\specs\\pembelian-stok-invoice-jual-delete.spec.ts",
+                        "column": 21,
+                        "line": 72
+                      }
+                    },
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 29306,
+                      "error": {
+                        "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#btn-save, button[title=\"Save\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <button title=\"Save\" type=\"button\" id=\"btn-save\" class=\"btn menu-input-nav btn-sm btn-rounded btn-primary btnMenuEdit \">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div id=\"modal_item_datatable_wrapper\" class=\"dataTables_wrapper no-footer\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div id=\"modal_item_datatable_wrapper\" class=\"dataTables_wrapper no-footer\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is not stable\u001b[22m\n\u001b[2m  6 × retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div tabindex=\"-1\" role=\"dialog\" id=\"modal_item\" aria-modal=\"true\" class=\"modal fade bd-example-modal-lg show\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div id=\"modal_item_datatable_wrapper\" class=\"dataTables_wrapper no-footer\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div id=\"modal_item_datatable_wrapper\" class=\"dataTables_wrapper no-footer\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div tabindex=\"-1\" role=\"dialog\" id=\"modal_item\" aria-modal=\"true\" class=\"modal fade bd-example-modal-lg show\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <div tabindex=\"-1\" role=\"dialog\" id=\"modal_item\" aria-modal=\"true\" class=\"modal fade bd-example-modal-lg show\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <div id=\"modal_item_datatable_wrapper\" class=\"dataTables_wrapper no-footer\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n",
+                        "stack": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#btn-save, button[title=\"Save\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <button title=\"Save\" type=\"button\" id=\"btn-save\" class=\"btn menu-input-nav btn-sm btn-rounded btn-primary btnMenuEdit \">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div id=\"modal_item_datatable_wrapper\" class=\"dataTables_wrapper no-footer\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div id=\"modal_item_datatable_wrapper\" class=\"dataTables_wrapper no-footer\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is not stable\u001b[22m\n\u001b[2m  6 × retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div tabindex=\"-1\" role=\"dialog\" id=\"modal_item\" aria-modal=\"true\" class=\"modal fade bd-example-modal-lg show\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div id=\"modal_item_datatable_wrapper\" class=\"dataTables_wrapper no-footer\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div id=\"modal_item_datatable_wrapper\" class=\"dataTables_wrapper no-footer\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div tabindex=\"-1\" role=\"dialog\" id=\"modal_item\" aria-modal=\"true\" class=\"modal fade bd-example-modal-lg show\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <div tabindex=\"-1\" role=\"dialog\" id=\"modal_item\" aria-modal=\"true\" class=\"modal fade bd-example-modal-lg show\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <div id=\"modal_item_datatable_wrapper\" class=\"dataTables_wrapper no-footer\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\n    at C:\\laragon\\www\\web-tester\\tests-e2e\\specs\\pembelian-stok-invoice-jual-delete.spec.ts:72:21\n    at C:\\laragon\\www\\web-tester\\tests-e2e\\specs\\pembelian-stok-invoice-jual-delete.spec.ts:21:5",
+                        "location": {
+                          "file": "C:\\laragon\\www\\web-tester\\tests-e2e\\specs\\pembelian-stok-invoice-jual-delete.spec.ts",
+                          "column": 21,
+                          "line": 72
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 70 |\u001b[39m       \u001b[90m// D. Simpan Transaksi PO ke Database\u001b[39m\n \u001b[90m 71 |\u001b[39m       \u001b[36mconst\u001b[39m saveBtn \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'#btn-save, button[title=\"Save\"]'\u001b[39m)\u001b[33m.\u001b[39mfirst()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 72 |\u001b[39m       \u001b[36mawait\u001b[39m saveBtn\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 73 |\u001b[39m\n \u001b[90m 74 |\u001b[39m       \u001b[90m// Tangani pop-up konfirmasi SweetAlert jika ada\u001b[39m\n \u001b[90m 75 |\u001b[39m       \u001b[36mconst\u001b[39m confirmSwal \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'.swal2-confirm'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\laragon\\www\\web-tester\\tests-e2e\\specs\\pembelian-stok-invoice-jual-delete.spec.ts",
+                            "column": 21,
+                            "line": 72
+                          },
+                          "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#btn-save, button[title=\"Save\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <button title=\"Save\" type=\"button\" id=\"btn-save\" class=\"btn menu-input-nav btn-sm btn-rounded btn-primary btnMenuEdit \">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div id=\"modal_item_datatable_wrapper\" class=\"dataTables_wrapper no-footer\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div id=\"modal_item_datatable_wrapper\" class=\"dataTables_wrapper no-footer\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is not stable\u001b[22m\n\u001b[2m  6 × retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div tabindex=\"-1\" role=\"dialog\" id=\"modal_item\" aria-modal=\"true\" class=\"modal fade bd-example-modal-lg show\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div id=\"modal_item_datatable_wrapper\" class=\"dataTables_wrapper no-footer\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div id=\"modal_item_datatable_wrapper\" class=\"dataTables_wrapper no-footer\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div tabindex=\"-1\" role=\"dialog\" id=\"modal_item\" aria-modal=\"true\" class=\"modal fade bd-example-modal-lg show\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <div tabindex=\"-1\" role=\"dialog\" id=\"modal_item\" aria-modal=\"true\" class=\"modal fade bd-example-modal-lg show\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <div id=\"modal_item_datatable_wrapper\" class=\"dataTables_wrapper no-footer\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\n\n  70 |       // D. Simpan Transaksi PO ke Database\n  71 |       const saveBtn = page.locator('#btn-save, button[title=\"Save\"]').first();\n> 72 |       await saveBtn.click();\n     |                     ^\n  73 |\n  74 |       // Tangani pop-up konfirmasi SweetAlert jika ada\n  75 |       const confirmSwal = page.locator('.swal2-confirm');\n    at C:\\laragon\\www\\web-tester\\tests-e2e\\specs\\pembelian-stok-invoice-jual-delete.spec.ts:72:21\n    at C:\\laragon\\www\\web-tester\\tests-e2e\\specs\\pembelian-stok-invoice-jual-delete.spec.ts:21:5"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "steps": [
+                        {
+                          "title": "1. Buat dan Simpan Purchase Order (PO)",
+                          "duration": 21161,
+                          "error": {
+                            "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#btn-save, button[title=\"Save\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <button title=\"Save\" type=\"button\" id=\"btn-save\" class=\"btn menu-input-nav btn-sm btn-rounded btn-primary btnMenuEdit \">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div id=\"modal_item_datatable_wrapper\" class=\"dataTables_wrapper no-footer\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div id=\"modal_item_datatable_wrapper\" class=\"dataTables_wrapper no-footer\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is not stable\u001b[22m\n\u001b[2m  6 × retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div tabindex=\"-1\" role=\"dialog\" id=\"modal_item\" aria-modal=\"true\" class=\"modal fade bd-example-modal-lg show\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div id=\"modal_item_datatable_wrapper\" class=\"dataTables_wrapper no-footer\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div id=\"modal_item_datatable_wrapper\" class=\"dataTables_wrapper no-footer\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div tabindex=\"-1\" role=\"dialog\" id=\"modal_item\" aria-modal=\"true\" class=\"modal fade bd-example-modal-lg show\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <div tabindex=\"-1\" role=\"dialog\" id=\"modal_item\" aria-modal=\"true\" class=\"modal fade bd-example-modal-lg show\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <div id=\"modal_item_datatable_wrapper\" class=\"dataTables_wrapper no-footer\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n",
+                            "stack": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#btn-save, button[title=\"Save\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <button title=\"Save\" type=\"button\" id=\"btn-save\" class=\"btn menu-input-nav btn-sm btn-rounded btn-primary btnMenuEdit \">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div id=\"modal_item_datatable_wrapper\" class=\"dataTables_wrapper no-footer\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div id=\"modal_item_datatable_wrapper\" class=\"dataTables_wrapper no-footer\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is not stable\u001b[22m\n\u001b[2m  6 × retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div tabindex=\"-1\" role=\"dialog\" id=\"modal_item\" aria-modal=\"true\" class=\"modal fade bd-example-modal-lg show\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div id=\"modal_item_datatable_wrapper\" class=\"dataTables_wrapper no-footer\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div id=\"modal_item_datatable_wrapper\" class=\"dataTables_wrapper no-footer\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div tabindex=\"-1\" role=\"dialog\" id=\"modal_item\" aria-modal=\"true\" class=\"modal fade bd-example-modal-lg show\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <div tabindex=\"-1\" role=\"dialog\" id=\"modal_item\" aria-modal=\"true\" class=\"modal fade bd-example-modal-lg show\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <div id=\"modal_item_datatable_wrapper\" class=\"dataTables_wrapper no-footer\">…</div> from <div class=\"tab-content mt-3\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\n    at C:\\laragon\\www\\web-tester\\tests-e2e\\specs\\pembelian-stok-invoice-jual-delete.spec.ts:72:21\n    at C:\\laragon\\www\\web-tester\\tests-e2e\\specs\\pembelian-stok-invoice-jual-delete.spec.ts:21:5",
+                            "location": {
+                              "file": "C:\\laragon\\www\\web-tester\\tests-e2e\\specs\\pembelian-stok-invoice-jual-delete.spec.ts",
+                              "column": 21,
+                              "line": 72
+                            },
+                            "snippet": "\u001b[0m \u001b[90m 70 |\u001b[39m       \u001b[90m// D. Simpan Transaksi PO ke Database\u001b[39m\n \u001b[90m 71 |\u001b[39m       \u001b[36mconst\u001b[39m saveBtn \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'#btn-save, button[title=\"Save\"]'\u001b[39m)\u001b[33m.\u001b[39mfirst()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 72 |\u001b[39m       \u001b[36mawait\u001b[39m saveBtn\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 73 |\u001b[39m\n \u001b[90m 74 |\u001b[39m       \u001b[90m// Tangani pop-up konfirmasi SweetAlert jika ada\u001b[39m\n \u001b[90m 75 |\u001b[39m       \u001b[36mconst\u001b[39m confirmSwal \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'.swal2-confirm'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m"
+                          }
+                        }
+                      ],
+                      "startTime": "2026-11-02T10:02:05.557Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\laragon\\www\\web-tester\\tests-e2e\\test-results\\pembelian-stok-invoice-jua-2e328-s-Transaksi-purchasing-flow-chromium-retry1\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\laragon\\www\\web-tester\\tests-e2e\\test-results\\pembelian-stok-invoice-jua-2e328-s-Transaksi-purchasing-flow-chromium-retry1\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\laragon\\www\\web-tester\\tests-e2e\\test-results\\pembelian-stok-invoice-jua-2e328-s-Transaksi-purchasing-flow-chromium-retry1\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "C:\\laragon\\www\\web-tester\\tests-e2e\\test-results\\pembelian-stok-invoice-jua-2e328-s-Transaksi-purchasing-flow-chromium-retry1\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\laragon\\www\\web-tester\\tests-e2e\\specs\\pembelian-stok-invoice-jual-delete.spec.ts",
+                        "column": 21,
+                        "line": 72
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
                 }
               ],
-              "id": "196d91943ca4dd118b56-d7ec4c2c3e554f85417b",
-              "file": "penerimaan-barang.spec.ts",
-              "line": 18,
+              "id": "00cb0b7de2ee24481da6-444f18d630ba2c082d0e",
+              "file": "pembelian-stok-invoice-jual-delete.spec.ts",
+              "line": 16,
               "column": 7
-            },
-            {
-              "title": "Dapat membuka form tambah penerimaan barang baru @purchasing @critical",
-              "ok": true,
-              "tags": [
-                "purchasing",
-                "critical"
-              ],
-              "tests": [
-                {
-                  "timeout": 60000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [],
-                  "status": "skipped"
-                }
-              ],
-              "id": "196d91943ca4dd118b56-8d4ba32ad7a43e6755fe",
-              "file": "penerimaan-barang.spec.ts",
-              "line": 31,
-              "column": 7
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "title": "purchase-order.spec.ts",
-      "file": "purchase-order.spec.ts",
-      "column": 0,
-      "line": 0,
-      "specs": [],
-      "suites": [
-        {
-          "title": "Modul Purchase Order",
-          "file": "purchase-order.spec.ts",
-          "line": 4,
-          "column": 6,
-          "specs": [
-            {
-              "title": "Dapat memuat halaman daftar pesanan pembelian dengan benar @purchasing @smoke",
-              "ok": true,
-              "tags": [
-                "purchasing",
-                "smoke"
-              ],
-              "tests": [
-                {
-                  "timeout": 60000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [],
-                  "status": "skipped"
-                }
-              ],
-              "id": "8e996c1882ca983a3c14-6cabedb7e5f27088280e",
-              "file": "purchase-order.spec.ts",
-              "line": 18,
-              "column": 7
-            },
-            {
-              "title": "Dapat membuka form tambah pesanan pembelian baru @purchasing @critical",
-              "ok": true,
-              "tags": [
-                "purchasing",
-                "critical"
-              ],
-              "tests": [
-                {
-                  "timeout": 60000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [],
-                  "status": "skipped"
-                }
-              ],
-              "id": "8e996c1882ca983a3c14-01afaf7abf76ce076907",
-              "file": "purchase-order.spec.ts",
-              "line": 31,
-              "column": 7
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "title": "smoke\\menu.spec.ts",
-      "file": "smoke/menu.spec.ts",
-      "column": 0,
-      "line": 0,
-      "specs": [],
-      "suites": [
-        {
-          "title": "Modul Smoke Test - Navigasi Menu ERP",
-          "file": "smoke/menu.spec.ts",
-          "line": 4,
-          "column": 6,
-          "specs": [
-            {
-              "title": "Membuka menu Dashboard tanpa error @smoke @menu",
-              "ok": true,
-              "tags": [
-                "smoke",
-                "menu"
-              ],
-              "tests": [
-                {
-                  "timeout": 60000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [],
-                  "status": "skipped"
-                }
-              ],
-              "id": "e1101eb7a8bd004af498-ebbb35f9fbf2caf2ea22",
-              "file": "smoke/menu.spec.ts",
-              "line": 27,
-              "column": 9
-            },
-            {
-              "title": "Membuka menu Sales - Faktur Penjualan tanpa error @smoke @menu",
-              "ok": true,
-              "tags": [
-                "smoke",
-                "menu"
-              ],
-              "tests": [
-                {
-                  "timeout": 60000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [],
-                  "status": "skipped"
-                }
-              ],
-              "id": "e1101eb7a8bd004af498-52c1a88eddc432f0952c",
-              "file": "smoke/menu.spec.ts",
-              "line": 27,
-              "column": 9
-            },
-            {
-              "title": "Membuka menu Sales - Pesanan Penjualan tanpa error @smoke @menu",
-              "ok": true,
-              "tags": [
-                "smoke",
-                "menu"
-              ],
-              "tests": [
-                {
-                  "timeout": 60000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [],
-                  "status": "skipped"
-                }
-              ],
-              "id": "e1101eb7a8bd004af498-401391eeea085e6e992a",
-              "file": "smoke/menu.spec.ts",
-              "line": 27,
-              "column": 9
-            },
-            {
-              "title": "Membuka menu Purchasing - Pesanan Pembelian tanpa error @smoke @menu",
-              "ok": true,
-              "tags": [
-                "smoke",
-                "menu"
-              ],
-              "tests": [
-                {
-                  "timeout": 60000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [],
-                  "status": "skipped"
-                }
-              ],
-              "id": "e1101eb7a8bd004af498-b6d3d8ed20d20592ec2a",
-              "file": "smoke/menu.spec.ts",
-              "line": 27,
-              "column": 9
-            },
-            {
-              "title": "Membuka menu Purchasing - Penerimaan Barang tanpa error @smoke @menu",
-              "ok": true,
-              "tags": [
-                "smoke",
-                "menu"
-              ],
-              "tests": [
-                {
-                  "timeout": 60000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [],
-                  "status": "skipped"
-                }
-              ],
-              "id": "e1101eb7a8bd004af498-cb750bc9c5c88f9aadeb",
-              "file": "smoke/menu.spec.ts",
-              "line": 27,
-              "column": 9
-            },
-            {
-              "title": "Membuka menu Inventory - Master Item / Barang tanpa error @smoke @menu",
-              "ok": true,
-              "tags": [
-                "smoke",
-                "menu"
-              ],
-              "tests": [
-                {
-                  "timeout": 60000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [],
-                  "status": "skipped"
-                }
-              ],
-              "id": "e1101eb7a8bd004af498-e3ebb913fc70ec2341d0",
-              "file": "smoke/menu.spec.ts",
-              "line": 27,
-              "column": 9
-            },
-            {
-              "title": "Membuka menu General Ledger - Transaksi Jurnal tanpa error @smoke @menu",
-              "ok": true,
-              "tags": [
-                "smoke",
-                "menu"
-              ],
-              "tests": [
-                {
-                  "timeout": 60000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [],
-                  "status": "skipped"
-                }
-              ],
-              "id": "e1101eb7a8bd004af498-eb5ceaa44c1f143c14d4",
-              "file": "smoke/menu.spec.ts",
-              "line": 27,
-              "column": 9
-            },
-            {
-              "title": "Membuka menu Finance - Kas Keluar (BKK) tanpa error @smoke @menu",
-              "ok": true,
-              "tags": [
-                "smoke",
-                "menu"
-              ],
-              "tests": [
-                {
-                  "timeout": 60000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [],
-                  "status": "skipped"
-                }
-              ],
-              "id": "e1101eb7a8bd004af498-311cb7f847bc3f6fb829",
-              "file": "smoke/menu.spec.ts",
-              "line": 27,
-              "column": 9
-            },
-            {
-              "title": "Membuka menu Finance - Kas Masuk (BKM) tanpa error @smoke @menu",
-              "ok": true,
-              "tags": [
-                "smoke",
-                "menu"
-              ],
-              "tests": [
-                {
-                  "timeout": 60000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [],
-                  "status": "skipped"
-                }
-              ],
-              "id": "e1101eb7a8bd004af498-e7e9d89dbdfaa9fb4e6d",
-              "file": "smoke/menu.spec.ts",
-              "line": 27,
-              "column": 9
-            },
-            {
-              "title": "Membuka menu Master - Pelanggan tanpa error @smoke @menu",
-              "ok": true,
-              "tags": [
-                "smoke",
-                "menu"
-              ],
-              "tests": [
-                {
-                  "timeout": 60000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [],
-                  "status": "skipped"
-                }
-              ],
-              "id": "e1101eb7a8bd004af498-6c79d9837f2599876dda",
-              "file": "smoke/menu.spec.ts",
-              "line": 27,
-              "column": 9
-            },
-            {
-              "title": "Membuka menu Master - Supplier tanpa error @smoke @menu",
-              "ok": true,
-              "tags": [
-                "smoke",
-                "menu"
-              ],
-              "tests": [
-                {
-                  "timeout": 60000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [],
-                  "status": "skipped"
-                }
-              ],
-              "id": "e1101eb7a8bd004af498-9184b3ba461b90ee74f1",
-              "file": "smoke/menu.spec.ts",
-              "line": 27,
-              "column": 9
             }
           ]
         }
@@ -785,11 +260,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-10-26T04:43:56.940Z",
-    "duration": 1790.7849999999999,
+    "startTime": "2026-11-02T10:01:31.297Z",
+    "duration": 68117.337,
     "expected": 0,
-    "skipped": 25,
-    "unexpected": 0,
+    "skipped": 0,
+    "unexpected": 1,
     "flaky": 0
   }
 }
