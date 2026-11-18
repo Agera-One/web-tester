@@ -98,7 +98,7 @@ class RunPlaywrightJob implements ShouldQueue
     /**
      * Tangani kegagalan job saat proses worker dihentikan atau melebihi timeout antrean.
      */
-    public function failed(\Throwable $exception = null)
+    public function failed(?\Throwable $exception = null)
     {
         if ($this->testRun) {
             $this->testRun->refresh();

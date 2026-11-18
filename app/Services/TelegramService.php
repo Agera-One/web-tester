@@ -148,7 +148,7 @@ class TelegramService
                 $durationText = number_format($testRun->duration_ms / 1000, 2) . ' detik';
             }
         } elseif ($testRun->started_at && $testRun->finished_at) {
-            $diff = $testRun->finished_at->diffInSeconds($testRun->started_at);
+            $diff = (int) $testRun->started_at->diffInSeconds($testRun->finished_at);
             $durationText = "{$diff} detik";
         } else {
             $durationText = '-';
