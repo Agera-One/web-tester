@@ -1,12 +1,12 @@
 # SeventhSoft Web Tester
 
-Aplikasi *Automatic Testing End-to-End* (E2E) untuk modul ERP SeventhSoft (web-new). Dibangun menggunakan antarmuka **Laravel 8** untuk manajemen eksekusi, serta **Playwright** dan peramban **Chromium** di latar belakang untuk melakukan pengujian otomatis layaknya interaksi pengguna asli.
+Aplikasi *Automatic Testing End-to-End* (E2E) untuk modul ERP SeventhSoft (web-new). Dibangun menggunakan antarmuka **Laravel 12** untuk manajemen eksekusi, serta **Playwright** dan peramban **Chromium** di latar belakang untuk melakukan pengujian otomatis layaknya interaksi pengguna asli.
 
 ---
 
 ## 🚀 Panduan Instalasi (Local/Server)
 
-Pastikan sistem Anda telah terpasang **PHP 7.4 / 8.0**, **MySQL 5.5+**, dan **Node.js 18+**.
+Pastikan sistem Anda telah terpasang **PHP 8.4+**, **Composer 2**, **MySQL 5.7+**, dan **Node.js 18+**.
 
 1. **Kloning Repositori & Instalasi Dependensi**
    ```bash
@@ -29,10 +29,13 @@ Pastikan sistem Anda telah terpasang **PHP 7.4 / 8.0**, **MySQL 5.5+**, dan **No
    php artisan migrate
    ```
 
-4. **Instalasi Peramban Playwright**  
-   Karena aplikasi ini menggunakan mode headless, pasang Chromium beserta dependensinya:
+4. **Instalasi Playwright & Peramban**  
+   Playwright memiliki `package.json` tersendiri di folder `tests-e2e/`. Pasang dependensinya, lalu pasang Chromium beserta dependensi sistemnya (mode headless):
    ```bash
+   cd tests-e2e
+   npm install
    npx playwright install --with-deps chromium
+   cd ..
    ```
 
 ---
