@@ -36,6 +36,9 @@ Route::middleware(['auth', 'is_active', 'role:admin,developer,qa'])->group(funct
     Route::put('/test-scenarios/{testScenario}/steps/{stepIndex}', [App\Http\Controllers\TestScenarioController::class, 'updateStep'])->name('test-scenarios.steps.update');
     Route::delete('/test-scenarios/{testScenario}/steps/{stepIndex}', [App\Http\Controllers\TestScenarioController::class, 'destroyStep'])->name('test-scenarios.steps.destroy');
 
+    // Pembuat Skenario
+    Route::resource('test-builders', TestBuilderController::class);
+
     // Katalog Test Playwright
     Route::get('/tests', [App\Http\Controllers\TestCatalogController::class, 'index'])->name('tests.index');
     Route::get('/tests/create', [TestController::class, 'create'])->name('tests.create');
@@ -46,8 +49,6 @@ Route::middleware(['auth', 'is_active', 'role:admin,developer,qa'])->group(funct
     Route::get('/tests/edit', [TestController::class, 'edit'])->name('tests.edit');
     Route::put('/tests/update', [TestController::class, 'update'])->name('tests.update');
     Route::delete('/tests/destroy', [TestController::class, 'destroy'])->name('tests.destroy');
-
-    Route::resource('test-builders', TestBuilderController::class);
 
     // Eksekusi Run Playwright
     Route::get('/runs', [App\Http\Controllers\RunController::class, 'index'])->name('runs.index');
