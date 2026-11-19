@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\EnvironmentController;
 use App\Http\Controllers\TestScenarioController; // Tambahkan baris ini
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\TestBuilderController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -46,6 +47,8 @@ Route::middleware(['auth', 'is_active', 'role:admin,developer,qa'])->group(funct
     Route::put('/tests/update', [TestController::class, 'update'])->name('tests.update');
     Route::delete('/tests/destroy', [TestController::class, 'destroy'])->name('tests.destroy');
 
+    Route::resource('test-builders', TestBuilderController::class);
+
     // Eksekusi Run Playwright
     Route::get('/runs', [App\Http\Controllers\RunController::class, 'index'])->name('runs.index');
     Route::get('/runs/create', [App\Http\Controllers\RunController::class, 'create'])->name('runs.create');
@@ -54,11 +57,11 @@ Route::middleware(['auth', 'is_active', 'role:admin,developer,qa'])->group(funct
     Route::get('/runs/{id}/status', [App\Http\Controllers\RunController::class, 'status'])->name('runs.status');
     Route::post('/runs/{id}/cancel', [App\Http\Controllers\RunController::class, 'cancel'])->name('runs.cancel');
     Route::get('/runs/{id}/report/{file?}', [App\Http\Controllers\RunController::class, 'report'])->where('file', '.*')->name('runs.report');
-    
+
     // Artefak Hasil Pengujian & Tren Case (F6 & F7)
     Route::get('/results/{id}/artifact/{type}', [App\Http\Controllers\ResultController::class, 'artifact'])->name('results.artifact');
     Route::get('/cases/{id}/history', [App\Http\Controllers\ResultController::class, 'history'])->name('cases.history');
-    
+
     // Penjadwalan Otomatis (Scheduler)
     Route::resource('schedules', App\Http\Controllers\ScheduleController::class);
     Route::post('/schedules/{schedule}/toggle', [App\Http\Controllers\ScheduleController::class, 'toggle'])->name('schedules.toggle');
